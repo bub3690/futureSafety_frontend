@@ -6,7 +6,7 @@ const APICore= axios.create({
 
 
 export function fetchPostList({commit},payload){
-    
+    bus.$emit('start:spinner');    
     APICore.get(payload.payload1).then(
         res=>{
             const mutation_payload={'payload1':res.data.data,'payload2':payload.payload2}

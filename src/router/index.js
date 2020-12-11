@@ -27,10 +27,6 @@ const routes = [
       content:ContentPage,
       footer:FooterPage
     },
-    beforeEnter:(to,from,next)=>{
-      bus.$emit('start:spinner');
-      next()
-  },
   },
   {
     path:'/board',

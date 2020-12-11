@@ -6,7 +6,7 @@
         <ul>
             <li v-for="list in lists" :key="list.title">
                 <a href="#">{{list.title}}</a>
-                <span>[{{list.publishedDate}}]</span>
+                <span class="dateGroup">{{list.publishedDate}}</span>
             </li>
         </ul>
     </div>
@@ -33,6 +33,7 @@
     padding-bottom:6px;
 }
 .BoardComponents{
+    
     text-align: left;
     
 }
@@ -40,16 +41,33 @@
     padding:0 0 0 10px;
 }
 .BoardComponents li{
+    position:relative;
     margin-bottom: 10px;
+    border-top:1px solid #e5e5e5;
+
+}
+.BoardComponents li:first-child{
+    border: none;
 }
 .BoardComponents li a{
-    font-size: 11pt;
+    position: relative;
+    display: block;
+    font-size: 18px;
     text-decoration: none;
     color:#555555;
+    width:75%;
+    font-weight: 400;
+    line-height:20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow:hidden;
+    padding:4px 0 4px 15px;
 }
-.BoardComponents li span{
+.BoardComponents li span.dateGroup{
+    position:absolute;
     font-size: 10pt;
-    float:right;
+    right:0;
+    top:10px;
     text-decoration: none;
     color:#555555;
 }

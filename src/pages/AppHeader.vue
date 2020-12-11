@@ -9,8 +9,8 @@
         </div>
                 <nav class="navbar">
                     <ul>
-                        <li>회원가입</li>
-                        <li>로그인</li>
+                        <router-link :to="{name:'SignupPage'}" tag="li">회원가입</router-link>
+                        <router-link :to="{name:'SigninPage'}" tag="li">로그인</router-link>
                     </ul>
                 </nav>
     </div>
@@ -72,6 +72,7 @@ div.explain{
     align-items: center;
     font-family: 'Han Sans',본고딕;
     color:white;
+    cursor:pointer;
 }
 
 ul{

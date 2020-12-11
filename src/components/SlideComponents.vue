@@ -88,7 +88,7 @@ export default {
     position:relative;
     overflow: hidden;
     width:100%;
-    height:40%;
+    height:calc(45% - 54px);
     margin:10px 10px;
     
 }

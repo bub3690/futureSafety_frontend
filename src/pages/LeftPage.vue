@@ -28,10 +28,12 @@
             <menu-components emoji="far fa-copy" :isboard="true" to='safety'  num='4' >
                 안전 자료실
             </menu-components>
+            <helpdesk-component></helpdesk-component>
         </ul>
     </div>
 </template>
 <script>
+import HelpdeskComponent from '../components/HelpdeskComponent'
 import MenuComponents from '../components/MenuComponents'
 import MenuList from '../components/MenuList.vue'
     export default {
@@ -39,6 +41,7 @@ import MenuList from '../components/MenuList.vue'
         components:{
             'MenuComponents':MenuComponents,
             'MenuList':MenuList,
+            'HelpdeskComponent':HelpdeskComponent
         }
         ,
         data(){
