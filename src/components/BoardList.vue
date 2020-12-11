@@ -2,18 +2,22 @@
     <div class="BoardList">
         <table class="Board">
             <colgroup>
-                <col width="33%"/>
+                <col width="50%"/>
                 <col width="*"/>
-                <col width="33%"/>
             </colgroup>
             <tbody>
                 <tr>
-                    <td class="notice"><board-components :lists="notice">
-                        <span style="color:#f9aa00; font-size:21px;">
+                    <td class="notice">
+                        <board-components :lists="notice">
+                            <a href="javascript:void(0);" style="font-size:21px;" :class="{'active':active,'titleAnchor':true}" @click="goData('notice')">
                             공지사항
-                        </span>
+                            </a>
+                            |
+                            <a href="javascript:void(0);" style="font-size:21px;" :class="{'active':!active,'titleAnchor':true}" @click="goData('safety')">
+                            안전 자료실
+                            </a >
                         <span class="plus">
-                            <button @click.prevent="goRouter('notice')" class="btn-default">
+                            <button @click.prevent="goRouter(goto)" class="btn-default">
                                 더 보기
                             </button></span>
                         </board-components>
@@ -25,16 +29,6 @@
                             </span >
                         </board-components>
                         </td>
-                    <td class="safetyBoard"><board-components :lists="safetyBoard">
-                        <span style="color:#5ad6f6; font-size:21px;">
-                            안전 자료실
-                        </span >
-                        <span class="plus"><button class="btn-default"  
-                        @click.prevent="goRouter('safety')" >더 보기
-                        </button>
-                        </span>
-                        </board-components>
-                    </td>
                 </tr>
             </tbody>
 
@@ -56,18 +50,34 @@ import api from '../api/index.js'
                 notice:[],
                 safetyBoard:[],
                 accident:[],
+                nowList:[],
                 colors:[
                     '#f9aa00',
                     '#3b8ccf',
                     '#5ad6f6'
                 ],
-                qnaimg:'static/phone.PNG'
+                active:true,
+                goto:'notice',
             }
         }
         ,
         methods:{
             goRouter(to){
                 this.$router.push({name:to})
+            },
+            goData(to){
+                console.log('2')
+                if(to==='notice'){
+                    this.nowList= this.notice
+                    this.active=true
+                    this.goto='notice'
+                    //style 바꾸는 코드.
+                }else{
+                    this.nowList=this.safetyBoard
+                    this.active=false;
+                    this.goto='safety'
+                }
+
             }
         }
         ,
@@ -87,7 +97,8 @@ import api from '../api/index.js'
                     this.accident= res.data.data.slice(0,5)
                 }
             )
-            //게시물은 5개로 고정   
+            this.nowList = this.notice
+            //게시물은 5개로 고정, 처음 시작시 list는 notice
 
         }
 
@@ -98,17 +109,19 @@ import api from '../api/index.js'
 <style scoped>
     .BoardList{
         display:block;
-        margin:10px 10px 10px 10px;
-        padding: 30px 0px;
         overflow: hidden;
+        width:100%;
+        margin:30px 10px 10px 10px;
     }
     .Board{
         border: 1px solid #c9c9c9;
         background: rgb(224,224,224);
-        width:100%; 
+        border-collapse: collapse;
+
     }
     .Board td.notice{
         background: white;
+
     }   
     .Board td.safetyBoard{
         background: white;
@@ -124,5 +137,15 @@ import api from '../api/index.js'
         border-radius: 4px; 
         padding:2px 12px;
         
+    }
+    .Board a{
+        color:#999999;
+        text-decoration: none;
+    }
+    .Board .active{
+        color:#3b8ccf;
+    }
+    .Board .titleAnchor{
+        font-weight:bold;
     }
 </style>

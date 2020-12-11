@@ -1,18 +1,8 @@
 <template>
     <div class="carousel">
         <slot></slot>
-        <div class="description">안전한 산업의 미래<br>(주)부산경남산업안전본부
-        </div>
         <button class="carousel__nav carousel__next" @click.prevent="next">다음</button>
         <button class="carousel__nav carousel__prev" @click.prevent="prev">이전</button>
-        <div class="carousel__pagination">
-        <button v-for="n in slideCount" 
-            :key=n 
-            @click="goto(n-1)"
-            :class="{active: (n-1)==index}"
-            >
-            </button>
-        </div>
     </div>
 </template>
 
