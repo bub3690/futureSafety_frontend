@@ -6,14 +6,30 @@
 
 <script>
     import SigninForm from '../components/SigninForm.vue'
+    import api from '../api/index.js'
+    import {mapActions} from 'vuex'
     export default {
         name:'SigninPage',
         components: { SigninForm },
         methods:{
             onSubmit(payload){
-                console.log('submit')
-                //api를 담아야함.
-            }
+                const post_data={
+                    'username':payload.id,
+                    'password':payload.password
+                }
+                this.signin(post_data)
+                    .then(res=>{
+                        // 사용자에게 로그인이 성공됐음을 알리고, 메인 페이지로 이동
+                        alert('로그인이 완료되었습니다.')
+                        this.$router.push({name:'Home'})    
+                    })
+                    .catch(err=>{
+                        //서버상에서 에러메세지 구체화 필요
+                        console.log(err.response.data)
+                    })
+                
+            },
+            ...mapActions(['signin'])
         }
 
     }

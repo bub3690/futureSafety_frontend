@@ -45,7 +45,7 @@
                     alert('비밀번호가 일치하지 않습니다.')
                     return
                 }
-                this.$emit('signup:submit',{id,company,name,email,password})
+                this.$emit('signup:submit',{id,company,name,email,password,passwordConfirm})
             }
         }
     }
