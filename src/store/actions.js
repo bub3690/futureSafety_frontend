@@ -30,15 +30,24 @@ export function signin({commit},payload){
                     return api.get('https://futuresafeyhome123.run.goorm.io/user/me')
         }).then(res =>{
             // 사용자 정보 요청이 성공했다면 변이를 사용하여 스토어에 사용자 정보를 제공함.
-            console.log(res)
             commit('SET_MY_INFO',res.data)
-
         })
 }
 
+export function signinByToken({commit}, token){
+    //1. 토큰을 스토어에 커밋한다.
+    commit('SET_ACCESS_TOKEN',token)
+    //2. 사용자의 정보를 받아온 후 스토어에 커밋한다.
+    return api.get('https://futuresafeyhome123.run.goorm.io/user/me')
+        .then(res=>{
+            commit('SET_MY_INFO',res.data)
+            // 예외처리는?
+        })
 
+}
 
 export default{
     fetchPostList,
-    signin
+    signin,
+    signinByToken
 }

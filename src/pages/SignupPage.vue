@@ -22,7 +22,6 @@ import api from '../api/index.js'
                     'company':payload.company,
                     'address':payload.email
                 }
-                console.log(post_data.user_id)
                 api.post('https://futuresafeyhome123.run.goorm.io/user/register',post_data)
                 .then(res=>{
                     alert('회원가입이 완료되었습니다.')

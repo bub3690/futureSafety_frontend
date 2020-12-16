@@ -17,8 +17,11 @@
 </template>
 
 <script>
+
     export default {
-        
+        name:'AppHeader',
+        computed:{
+        }
     }
 </script>
 
