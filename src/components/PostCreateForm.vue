@@ -29,9 +29,6 @@
                         <input class="search-default check" v-model="check" id="check" type="checkbox"/>
                     </div>
                 </div>
-
-
-
                 <div class="horizontal">
                     <div class="forLabel">
                         <label>내용</label>
@@ -45,15 +42,18 @@
                             />
                     </div>
                 </div>
-
-
-
                 <div class="horizontal">
                     <div class="forLabel">
                         <label for="file-upload">첨부파일</label>
                     </div>
                     <div class="forInput">
-                        <input class="search-default" id="file-upload" type="text" placeholder="게시물 제목을 입력해주세요."/>
+                        <input class="search-default" id="file-upload" ref="fileUpload" @change="processFile($event)"  type="file" placeholder="파일을 첨부해주세요."/>
+                        <ul>
+                            <li v-for="(item,index) in files" :key="index">
+                                <strong>{{item.name}}</strong>
+                                <button type="button" @click="removeFile(index)"><i class="fas fa-times"></i></button>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </fieldset>
@@ -67,6 +67,7 @@
 import 'codemirror/lib/codemirror.css';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/vue-editor';
+import api from '@/api'
     export default {
         name:'PostCreateForm',
         components:{
@@ -77,21 +78,43 @@ import { Editor } from '@toast-ui/vue-editor';
                 title:'',
                 editorOptions:{
                     hideModeSwitch:true,
-
+                    hooks:{
+                            addImageBlobHook (blob, callback) {
+                            let fileUpload = (blob) => {
+                                const formData = new FormData()
+                                formData.append('file', blob)
+                                api.post('https://futuresafeyhome123.run.goorm.io/board/image/', formData).then(res => {
+                                //if (res.data.code !== HTTP_201_CREATED) throw res.data.message
+                                console.log(res.data)
+                                callback.call('[image]', 'https://futuresafeyhome123.run.goorm.io'+res.data.file)    
+                                }, () => alert('시스템에서 오류가 발생하였습니다. 개발팀에 문의바랍니다.'))
+                                .catch(errorMsg => alert(errorMsg))
+                            }
+                            
+                            fileUpload(blob, callback)
+                            return true
+                            }              
+                    }
                 },
                 category:'공지사항',
                 check:false,
+                files:[]
             }
         },
         methods:{
             onSubmit(){
-                alert('글이 \''+this.category+'\'에 작성되었습니다.')
+                //alert('글이 \''+this.category+'\'에 작성되었습니다.')
                 const html = this.$refs.toastuiEditor.invoke('getHtml');
-                const {title,category,check} = this
-                this.$emit('submit',{title,category,check,html})
-            },
-            goBack(){
-
+                const {title,category,check,files} = this
+                this.$emit('submit',{title,category,check,files,html})
+             },
+            processFile(event){
+                this.files.push(event.target.files[0])
+                this.$refs.fileUpload.value=''
+            },goBack(){
+                this.$router.push({name:'Home'})
+            },removeFile(index){
+                this.files.splice(index,1)
             }
         }
 

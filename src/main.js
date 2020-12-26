@@ -5,13 +5,24 @@ import store from './store'
 import Cookies from 'js-cookie'
 Vue.config.productionTip = false
 
-const savedToken = Cookies.get('accessToken')
-if(savedToken){
-  store.dispatch('signinByToken', savedToken)
+//const savedToken = Cookies.get('accessToken')
+//if(savedToken){
+//  store.dispatch('signinByToken', savedToken)
+//}
+function init(){
+  const savedToken = Cookies.get('accessToken')
+  if(savedToken){
+    return store.dispatch('signinByToken', savedToken)
+  }else{
+    return Promise.resolve()
+  }
 }
 
-new Vue({
+
+init().then( res =>{
+  new Vue({
   router,
   store,
   render: h => h(App)
 }).$mount('#app')
+})

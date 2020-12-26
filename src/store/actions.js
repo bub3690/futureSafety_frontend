@@ -3,10 +3,16 @@ import api from '../api/index.js'
 
 
 export function fetchPostList({commit},payload){
+    const matching1={'notice':'A','safety':'B'}
+
+    // payload2 에도 똑같은 값을 담는 이유는 boardTitle에 A,B를 통해서 게시판을 구분하기 위함. 
+    // NOTICE 페이지에서는 COMPUTED에서 구분해야함.
+    const sever_payload = matching1[payload]
+
     bus.$emit('start:spinner');    
-    api.get(payload.payload1).then(
+    api.get('https://futuresafeyhome123.run.goorm.io/board/list/?board_id='+sever_payload).then(
         res=>{
-            const mutation_payload={'payload1':res.data.data,'payload2':payload.payload2}
+            const mutation_payload={'payload1':res.data,'payload2':sever_payload}
             commit('FETCH_LISTS',mutation_payload)
 
             setTimeout(function(){
@@ -40,14 +46,21 @@ export function signinByToken({commit}, token){
     //2. 사용자의 정보를 받아온 후 스토어에 커밋한다.
     return api.get('https://futuresafeyhome123.run.goorm.io/user/me')
         .then(res=>{
+            console.log(res)
             commit('SET_MY_INFO',res.data)
             // 예외처리는?
         })
 
 }
 
+export function logout({commit}){
+    commit('SET_INFO_NULL')
+    commit('SET_TOKEN_BLANK')
+}
+
 export default{
     fetchPostList,
     signin,
-    signinByToken
+    signinByToken,
+    logout
 }

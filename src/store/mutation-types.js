@@ -1,3 +1,5 @@
 export const FETCH_LISTS= 'FETCH_LISTS';
 export const SET_ACCESS_TOKEN= 'SET_ACCESS_TOKEN';
 export const SET_MY_INFO= 'SET_MY_INFO';
+export const SET_TOKEN_BLANK='SET_TOKEN_BLANK';
+export const SET_INFO_NULL='SET_INFO_NULL';

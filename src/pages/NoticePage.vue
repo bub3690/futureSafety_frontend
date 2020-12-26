@@ -2,8 +2,8 @@
             <div class="notice-page">
                 <button-crumb>
                 </button-crumb>
-                <h2>{{boardTitle}}</h2>
-                <router-view :list="posts" :boardTitle="boardTitle"></router-view>
+                <h2>{{boardTitle_change}}</h2>
+                <router-view :list="posts" :boardTitle="boardTitle_change"></router-view>
                 <!--<post-list :list="notice"></post-list>-->
                 <!--<post-detail></post-detail>-->
                 <div class="notice-footer">
@@ -42,21 +42,23 @@ import {mapActions, mapState} from 'vuex';
             'ButtonCrumb':ButtonCrumb,
         },
         computed:{
+            boardTitle_change(){
+                const matching1={'A':'공지사항','B':'안전 자료실'}
+                return matching1[this.boardTitle]
+            },
             ...mapState([
                 'posts',
                 'boardTitle'
             ])
         },
         methods:{
-            dataGet(){
-                const matching={'notice':'공지사항','safety':'안전 자료실'}
-                
+            dataGet(){              
                 //여기서 해당 게시판의 데이터를 가져옴.
                 //그 후 props로 List한테만 넘겨줌. postdetail은 따로 데이터를 fetch해야함.
                 //데이터 받아오는것 여기 쓰기 . /board/notice
                 var dataArray = this.$route.path.split('/')
-                var dataPath = 'static/json/'+dataArray[2]+'.json'
-                const payload={'payload1':dataPath,'payload2':matching[dataArray[2]]}
+                var dataPath = dataArray[2]
+                const payload=dataPath
 
                 //0번 빈칸, 1번 board, 2번 notice
                 this.fetchPostList(payload);

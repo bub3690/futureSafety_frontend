@@ -26,29 +26,29 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="post in checkedList" :key="post.postNumber">
+                <tr v-for="post in checkedList" :key="post.id">
                     <td scope="col" class="tableNumber"><i class="fas fa-star checked"></i></td>
                     <td class="tableTitle" scope="col">
                         <router-link :to="{name:findDetail,
-                        params:{postId:post.postNumber.toString()}}"
+                        params:{postId:post.id.toString()}}"
                         class="checked">
                              (중요!) {{post.title}}
                         </router-link>
                         </td>
                     <td scope="col">{{post.author}}</td>
-                    <td scope="col">{{post.publishedDate}}</td>
+                    <td scope="col">{{post.date_published}}</td>
                 </tr>
 
-                <tr v-for="post in notChecked" :key="post.postNumber">
-                    <td scope="col">{{post.postNumber}}</td>
+                <tr v-for="post in notChecked" :key="post.id">
+                    <td scope="col">{{post.id}}</td>
                     <td class="tableTitle" scope="col">
                         <router-link :to="{name:findDetail,
-                        params:{postId:post.postNumber.toString()}}">
+                        params:{postId:post.id.toString()}}">
                              {{post.title}}
                         </router-link>
                         </td>
                     <td scope="col">{{post.author}}</td>
-                    <td scope="col">{{post.publishedDate}}</td>
+                    <td scope="col">{{post.date_published}}</td>
                 </tr>
             </tbody>
 
@@ -80,14 +80,14 @@
             },
             checkedList(){
                 const checked =this.list.filter((item,index,array)=>{
-                    return item.check === true
+                    return item.is_important === true
                 })
                 console.log(checked)
                 return checked;
             },
             notChecked(){
                 const checked =this.list.filter((item,index,array)=>{
-                    return item.check === false
+                    return item.is_important === false
                 })
                 console.log(checked)
                 return checked;                

@@ -1,4 +1,4 @@
-import {FETCH_LISTS, SET_ACCESS_TOKEN,SET_MY_INFO} from './mutation-types'
+import {FETCH_LISTS, SET_ACCESS_TOKEN,SET_MY_INFO,SET_TOKEN_BLANK,SET_INFO_NULL} from './mutation-types'
 
 import api from '../api/index.js'
 import Cookies from 'js-cookie'
@@ -14,7 +14,7 @@ export default{
             api.defaults.headers.common.Authorization = `Token ${accessToken}`
             // 토큰을 cookie에 저장한다. 저장기한은 하루.
             Cookies.set('accessToken',accessToken,{
-                expires:3
+                expires:1
             })
         }
     },
@@ -22,5 +22,13 @@ export default{
         if(me){
             state.me = me
         }
+    },
+    [SET_TOKEN_BLANK](state){
+        state.accessToken=''
+        delete api.defaults.headers.common.Authorization
+        Cookies.remove('accessToken')
+    },
+    [SET_INFO_NULL](state){
+        state.me=null
     }
 }
