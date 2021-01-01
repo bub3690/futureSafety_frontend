@@ -31,12 +31,15 @@ import bus from '../utils/bus.js'
                 //여기서 해당 게시판의 데이터를 가져옴.
                 //그 후 props로 List한테만 넘겨줌. postdetail은 따로 데이터를 fetch해야함.
                 //데이터 받아오는것 여기 쓰기 . /board/notice
-                var dataArray = this.$route.path.split('/')
-                var dataPath = dataArray[2]
+                const dataArray = this.$route.path.split('/')
+                const dataPath = dataArray[2]
                 const payload=dataPath
-
+                this.setBoardTitle(dataArray[2])
                 //0번 빈칸, 1번 board, 2번 notice
-                this.fetchPostList(payload);
+                if(dataArray.length<=3){
+                    //if문 이유는 detail페이지에서는 list 안부를려고.
+                    this.fetchPostList(payload);
+                }
             },            
             move(params){
                 // get comparable fullPaths
@@ -46,21 +49,22 @@ import bus from '../utils/bus.js'
                     // handle any error due the redundant navigation here
                     // or handle any other param modification and route afterwards
                     if(this.isboard===true){
-                        console.log("데이터 갱신")
+                        //console.log("데이터 갱신")
                         this.dataGet()
                     }
                     return 
                 }
-                console.log('push')
+                //console.log('push')
                 // route as expected
                 this.$router.push(params)
                 if(this.isboard===true){
-                    console.log("데이터 갱신")
+                    //console.log("데이터 갱신")
                     this.dataGet()
                 }                
             },
             ...mapActions([
-                'fetchPostList'
+                'fetchPostList',
+                'setBoardTitle'
             ])
 
         }

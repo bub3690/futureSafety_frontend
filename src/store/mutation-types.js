@@ -1,5 +1,8 @@
 export const FETCH_LISTS= 'FETCH_LISTS';
 export const SET_ACCESS_TOKEN= 'SET_ACCESS_TOKEN';
 export const SET_MY_INFO= 'SET_MY_INFO';
+export const SET_BOARD_TITLE = 'SET_BOARD_TITLE';
 export const SET_TOKEN_BLANK='SET_TOKEN_BLANK';
 export const SET_INFO_NULL='SET_INFO_NULL';
+export const FETCH_POST = 'FETCH_POST'
+export const SET_POST_NULL = 'SET_POST_NULL';

@@ -1,5 +1,5 @@
 <template>
-    <div class="post-create-form">
+    <div class="post-edit-form">
         <form @submit.prevent="onSubmit">
             <fieldset>
                 <div class="horizontal">
@@ -69,7 +69,7 @@ import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/vue-editor';
 import api from '@/api'
     export default {
-        name:'PostCreateForm',
+        name:'PostEditForm',
         components:{
             editor:Editor
         },
@@ -85,7 +85,7 @@ import api from '@/api'
                                 formData.append('file', blob)
                                 api.post('https://futuresafeyhome123.run.goorm.io/board/image/', formData).then(res => {
                                 //if (res.data.code !== HTTP_201_CREATED) throw res.data.message
-                                console.log(res.data)
+                                //console.log(res.data)
                                 callback.call('[image]', 'https://futuresafeyhome123.run.goorm.io'+res.data.file)    
                                 }, () => alert('시스템에서 오류가 발생하였습니다. 개발팀에 문의바랍니다.'))
                                 .catch(errorMsg => alert(errorMsg))
@@ -106,7 +106,6 @@ import api from '@/api'
                 //alert('글이 \''+this.category+'\'에 작성되었습니다.')
                 const html = this.$refs.toastuiEditor.invoke('getHtml');
                 const {title,category,check,files} = this
-                console.log(html)
                 this.$emit('submit',{title,category,check,files,html})
              },
             processFile(event){

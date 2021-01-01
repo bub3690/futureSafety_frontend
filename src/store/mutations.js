@@ -1,12 +1,15 @@
-import {FETCH_LISTS, SET_ACCESS_TOKEN,SET_MY_INFO,SET_TOKEN_BLANK,SET_INFO_NULL} from './mutation-types'
+import {FETCH_LISTS, SET_ACCESS_TOKEN,SET_MY_INFO,
+    SET_TOKEN_BLANK,SET_INFO_NULL,FETCH_POST,SET_POST_NULL,SET_BOARD_TITLE} from './mutation-types'
 
 import api from '../api/index.js'
 import Cookies from 'js-cookie'
 
 export default{
     [FETCH_LISTS] (state,payload){
-        state.posts = payload.payload1;
-        state.boardTitle= payload.payload2;
+        state.posts = payload;
+    },
+    [SET_BOARD_TITLE](state,payload){
+        state.boardTitle= payload;
     },
     [SET_ACCESS_TOKEN](state,accessToken){
         if(accessToken){
@@ -30,5 +33,11 @@ export default{
     },
     [SET_INFO_NULL](state){
         state.me=null
+    },
+    [FETCH_POST](state, post){
+        state.post = post
+    },
+    [SET_POST_NULL](state){
+        state.post = null
     }
 }

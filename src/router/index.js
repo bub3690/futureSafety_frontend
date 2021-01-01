@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
+import store from '../store'
 //페이지
 import AppHeader from '../pages/AppHeader'
 import LeftPage from '../pages/LeftPage'
@@ -12,6 +12,7 @@ import FooterPage from '../pages/FooterPage'
 import PostCreatePage from '../pages/PostCreatePage'
 import SignupPage from '../pages/SignupPage'
 import SigninPage from '../pages/SigninPage'
+import PostEditPage from '../pages/PostEditPage'
 import bus from '../utils/bus'
 
 Vue.use(VueRouter)
@@ -35,10 +36,6 @@ const routes = [
       aside:LeftPage,
       content:NoticePage,
       footer:FooterPage
-    },
-    beforeEnter:(to,from,next)=>{
-        bus.$emit('start:spinner');
-        next()
     },
     children:[
       {
@@ -74,6 +71,32 @@ const routes = [
       content:PostCreatePage,
       footer:FooterPage
     },
+  },
+  {
+    path:'/board/edit/:postId',
+    name:'editPage',
+    components:{
+      header:AppHeader,
+      aside:LeftPage,
+      content:PostEditPage,
+      footer:FooterPage
+    },
+    props:{
+      content:true},
+    beforeEnter(to, from, next){
+      const {isAuthorized} = store.getters
+      if(!isAuthorized){
+        alert('로그인이 필요합니다.')
+        next({name:'Signin'})
+        return false;
+      }
+      // 게시물이 아닌 주소창으로 접근할 경우
+      // board/notice/28 : fullPath
+      // to에 props 따올것.
+      if(from.fullPath != 'board/notice/28')
+      next()
+
+    }
   },
   {
     path:'/signup',

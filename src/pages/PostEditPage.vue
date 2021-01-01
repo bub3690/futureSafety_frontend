@@ -1,17 +1,23 @@
 <template>
-    <div class="post-create-page">
-        <h2>게시물 작성하기</h2>
-        <post-create-form @submit="onSubmit"></post-create-form>
+    <div class="post-edit-page">
+        <h2>게시물 수정하기</h2>
+        <post-edit-form @submit="onSubmit"></post-edit-form>
     </div>
 </template>
 
 <script>
 import api from '@/api'
-import PostCreateForm from '../components/PostCreateForm'
+import PostEditForm from '../components/PostEditForm'
     export default {
-        name:'PostCreatePage',
+        name:'PostEditPage',
         components:{
-            'PostCreateForm':PostCreateForm
+            'PostEditForm':PostEditForm
+        },
+        props:{
+            postId:{
+                type:String,
+                required: true
+            },
         },
         methods:{
             onSubmit(payload){
@@ -46,7 +52,7 @@ import PostCreateForm from '../components/PostCreateForm'
                     fd.append('post_files',null)
                 }
 
-                api.post('https://futuresafeyhome123.run.goorm.io/api/board/create/',fd)
+                api.put('https://futuresafeyhome123.run.goorm.io/api/board/'+this.postId,fd)
                     .then(res=>{
                         alert('게시물이 성공적으로 '+payload.category+'에 작성되었습니다.')
                         this.$router.push({
@@ -67,12 +73,15 @@ import PostCreateForm from '../components/PostCreateForm'
 
 
             }
+        },
+        created(){
+            console.log(this.postId)
         }
     }
 </script>
 
 <style scoped>
-.post-create-page{   
+.post-edit-page{   
     background: #f7f9fa;
     box-sizing: border-box;
     position:relative;
@@ -83,7 +92,7 @@ import PostCreateForm from '../components/PostCreateForm'
     padding: 32px 40px;
     font-family: NanumGothic,"나눔고딕",NanumGothic,"돋움",dotum,sans-serif;
 }
-.post-create-page h2{
+.post-edit-page h2{
     text-align:left;
 }
 

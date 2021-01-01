@@ -35,7 +35,7 @@
                              (중요!) {{post.title}}
                         </router-link>
                         </td>
-                    <td scope="col">{{post.author}}</td>
+                    <td scope="col">{{post.author_name}}</td>
                     <td scope="col">{{post.date_published}}</td>
                 </tr>
 
@@ -47,7 +47,7 @@
                              {{post.title}}
                         </router-link>
                         </td>
-                    <td scope="col">{{post.author}}</td>
+                    <td scope="col">{{post.author_name}}</td>
                     <td scope="col">{{post.date_published}}</td>
                 </tr>
             </tbody>
@@ -82,16 +82,16 @@
                 const checked =this.list.filter((item,index,array)=>{
                     return item.is_important === true
                 })
-                console.log(checked)
                 return checked;
             },
             notChecked(){
                 const checked =this.list.filter((item,index,array)=>{
                     return item.is_important === false
                 })
-                console.log(checked)
                 return checked;                
-            }
+            },
+
+
         },
         mounted(){
             //Total1597 (1/160)
