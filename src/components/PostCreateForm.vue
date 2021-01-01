@@ -64,6 +64,7 @@
 </template>
 
 <script>
+import bus from '../utils/bus.js'
 import 'codemirror/lib/codemirror.css';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/vue-editor';
@@ -76,6 +77,7 @@ import api from '@/api'
         data(){
             return{
                 title:'',
+                image_datas:[],
                 editorOptions:{
                     hideModeSwitch:true,
                     hooks:{
@@ -83,12 +85,15 @@ import api from '@/api'
                             let fileUpload = (blob) => {
                                 const formData = new FormData()
                                 formData.append('file', blob)
-                                api.post('https://futuresafeyhome123.run.goorm.io/board/image/', formData).then(res => {
+                                api.post('https://futuresafeyhome123.run.goorm.io/api/board/image/', formData).then(res => {
                                 //if (res.data.code !== HTTP_201_CREATED) throw res.data.message
-                                console.log(res.data)
-                                callback.call('[image]', 'https://futuresafeyhome123.run.goorm.io'+res.data.file)    
-                                }, () => alert('시스템에서 오류가 발생하였습니다. 개발팀에 문의바랍니다.'))
-                                .catch(errorMsg => alert(errorMsg))
+                                
+                                callback.call('[image]', 'https://futuresafeyhome123.run.goorm.io/'+res.data.file)
+                                bus.$emit('send:image_data',res.data.id)
+                                }, () => alert('이미지 불러오기 오류가 발생하였습니다. 운영자에게 문의바랍니다.')
+                                
+                                )
+                                .catch(errorMsg => alert(errorMsg+'\n 시스템 오류가 발생생했습니다.\n 해당 메세지를 운영자에게 문의바랍니다.'))
                             }
                             
                             fileUpload(blob, callback)
@@ -98,16 +103,17 @@ import api from '@/api'
                 },
                 category:'공지사항',
                 check:false,
-                files:[]
+                files:[],
+
             }
         },
         methods:{
             onSubmit(){
                 //alert('글이 \''+this.category+'\'에 작성되었습니다.')
                 const html = this.$refs.toastuiEditor.invoke('getHtml');
-                const {title,category,check,files} = this
+                const {title,category,check,files,image_datas} = this
                 console.log(html)
-                this.$emit('submit',{title,category,check,files,html})
+                this.$emit('submit',{title,category,check,files,html,image_datas})
              },
             processFile(event){
                 this.files.push(event.target.files[0])
@@ -116,7 +122,16 @@ import api from '@/api'
                 this.$router.push({name:'Home'})
             },removeFile(index){
                 this.files.splice(index,1)
+            },insert_image(image){
+                console.log(image)
+                this.image_datas.push(image)
             }
+        },
+        created(){
+            bus.$on('send:image_data',this.insert_image)
+        },
+        beforeDestroy(){
+            bus.$off('send:image_data',this.insert_image)
         }
 
     }

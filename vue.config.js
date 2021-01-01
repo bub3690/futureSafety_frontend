@@ -4,6 +4,7 @@ module.exports = {
             // 프록시 설정
             allowedHosts: [
                 'futuresafeyhome123.run.goorm.io/',
+                'localhost:8080'
             ],
             proxy: {
                 // 프록시 요청을 보낼 api의 시작 부분

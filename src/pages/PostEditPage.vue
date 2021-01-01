@@ -1,13 +1,15 @@
 <template>
     <div class="post-edit-page">
         <h2>게시물 수정하기</h2>
-        <post-edit-form @submit="onSubmit"></post-edit-form>
+        <post-edit-form v-if="post" @submit="onSubmit" :post="post"></post-edit-form>
+        <p v-else>게시물 불러오는 중...</p>
     </div>
 </template>
 
 <script>
 import api from '@/api'
 import PostEditForm from '../components/PostEditForm'
+import {mapState} from 'vuex'
     export default {
         name:'PostEditPage',
         components:{
@@ -18,6 +20,9 @@ import PostEditForm from '../components/PostEditForm'
                 type:String,
                 required: true
             },
+        },
+        computed:{
+            ...mapState(['post'])
         },
         methods:{
             onSubmit(payload){
@@ -74,9 +79,7 @@ import PostEditForm from '../components/PostEditForm'
 
             }
         },
-        created(){
-            console.log(this.postId)
-        }
+        
     }
 </script>
 

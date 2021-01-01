@@ -3,6 +3,5 @@ export default{
     accessToken:'',
     posts:[],
     boardTitle:null,
-    postView:null,
     post:null
 }

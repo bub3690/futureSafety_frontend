@@ -38,7 +38,8 @@
                             ref="toastuiEditor"
                             :options="editorOptions"
                             height="500px"
-                            initialEditType="wysiwyg"           
+                            initialEditType="wysiwyg"
+                            :initialValue="initBody"   
                             />
                     </div>
                 </div>
@@ -70,12 +71,19 @@ import { Editor } from '@toast-ui/vue-editor';
 import api from '@/api'
     export default {
         name:'PostEditForm',
+        props:{
+            post:{
+                type:Object,
+                required:true
+            }
+        },
         components:{
             editor:Editor
         },
         data(){
             return{
                 title:'',
+                initBody:'dd',
                 editorOptions:{
                     hideModeSwitch:true,
                     hooks:{
@@ -83,11 +91,12 @@ import api from '@/api'
                             let fileUpload = (blob) => {
                                 const formData = new FormData()
                                 formData.append('file', blob)
-                                api.post('https://futuresafeyhome123.run.goorm.io/board/image/', formData).then(res => {
+                                api.post('https://futuresafeyhome123.run.goorm.io/api/board/image/', formData).then(res => {
                                 //if (res.data.code !== HTTP_201_CREATED) throw res.data.message
                                 //console.log(res.data)
-                                callback.call('[image]', 'https://futuresafeyhome123.run.goorm.io'+res.data.file)    
-                                }, () => alert('시스템에서 오류가 발생하였습니다. 개발팀에 문의바랍니다.'))
+                                image_data.push(res.data.id)
+                                callback.call('[image]', 'https://futuresafeyhome123.run.goorm.io/'+res.data.file)    
+                                }, () => alert('시스템에서 오류가 발생하였습니다. 운영자에 문의바랍니다.'))
                                 .catch(errorMsg => alert(errorMsg))
                             }
                             
@@ -98,15 +107,17 @@ import api from '@/api'
                 },
                 category:'공지사항',
                 check:false,
-                files:[]
+                files:[],
+                fileChange:false,
+                image_datas:[],
             }
         },
         methods:{
             onSubmit(){
                 //alert('글이 \''+this.category+'\'에 작성되었습니다.')
                 const html = this.$refs.toastuiEditor.invoke('getHtml');
-                const {title,category,check,files} = this
-                this.$emit('submit',{title,category,check,files,html})
+                const {title,category,check,files,image_datas} = this
+                this.$emit('submit',{title,category,check,files,html,image_datas})
              },
             processFile(event){
                 this.files.push(event.target.files[0])
@@ -115,7 +126,29 @@ import api from '@/api'
                 this.$router.push({name:'Home'})
             },removeFile(index){
                 this.files.splice(index,1)
+                //파일이 변경되면 true로 해서, 서버에서 object를 새로만듬.
+                this.fileChange=true
             }
+        },
+        created(){
+            const category ={
+                'A':'공지사항',
+                'B':'안전 자료실'
+            }            
+            //console.log(this.post)
+            this.title = this.post.title
+            this.category = category[this.post.board_id]
+            this.initBody = this.post.body
+            this.check = this.post.is_important
+            /*
+            파일업로드
+            for(var i=0; i<this.post.post_files.length; i++){
+                if(this.post.post_files[i].file_name !="null" ){
+                    console.log("null아님 ",this.post.post_files[i] )
+                    this.files.push(this.post.post_files[i])
+                }
+            }
+            */
         }
 
     }

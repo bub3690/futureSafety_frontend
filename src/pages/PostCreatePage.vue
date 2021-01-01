@@ -1,7 +1,7 @@
 <template>
     <div class="post-create-page">
         <h2>게시물 작성하기</h2>
-        <post-create-form @submit="onSubmit"></post-create-form>
+        <post-create-form @submit="onSubmit" ></post-create-form>
     </div>
 </template>
 
@@ -29,16 +29,28 @@ import PostCreateForm from '../components/PostCreateForm'
                     'board_id':category[payload.category],
                     'title':payload.title,
                     'body':payload.html,
-                    'is_important':payload.check
+                    'is_important':payload.check,
+                    'image_datas':payload.image_datas
                 }
                 fd.append('board_id',category[payload.category])
                 fd.append('title',payload.title)
                 fd.append('body',payload.html)
                 fd.append('is_important',payload.check)
+
+                // multiple images
+                if(payload.image_datas.length!=0){
+                    post_data['image_datas']=payload.image_datas
+                    for(var i=0; i<payload.image_datas.length; i++){
+                        fd.append('image_datas',payload.image_datas[i])
+                    }
+                }else{
+                    fd.append('image_datas',null)
+                }
+
+                // multiple files
                 console.log("파일:",payload.files)
                 if(payload.files.length!=0){
                     post_data['post_files']=payload.files
-                    // mulitple file 방법 찾아야함.
                     for(var i=0; i<payload.files.length; i++){
                         fd.append('post_files',payload.files[i])
                     }
@@ -67,7 +79,7 @@ import PostCreateForm from '../components/PostCreateForm'
 
 
             }
-        }
+        },
     }
 </script>
 

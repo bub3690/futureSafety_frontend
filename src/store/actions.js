@@ -70,7 +70,7 @@ export function fetchPost({commit}, postId){
             //console.log(res)
             // 받아온 post 데이터를 commit해줌.
             commit('FETCH_POST',res.data)
-            // 예외처리는?
+            // 예외처리는 각 요청하는 부분에서.
         })
 
 

@@ -63,10 +63,6 @@ import store from '../store'
                     )
                 })
         },
-        destroyed(){
-            // post를 비우는 코드 필요.
-            this.SET_POST_NULL()
-        },
         created(){
             console.log(this.postId)
         }
