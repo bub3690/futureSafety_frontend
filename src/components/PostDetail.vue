@@ -38,9 +38,18 @@ import store from '../store'
             })
             .catch(
                 err=>{
-                    console.log(err)
-                    alert(err.response)
-                    this.$router.back()
+                    if(err.response.status === 401){
+                        alert('로그인이 필요합니다.')
+                        next({name:'SigninPage'})
+                        return
+                    }else if(err.response.status === 403){
+                        alert('인증된 회원만 글을 읽을 수 있습니다. 관리자에게 권한 요청해주세요.')
+                        next({name:'Home'})
+                    }else{
+                        alert('알 수 없는 오류입니다. 해당사항을 관리자에게 알려주세요.'+'\n'+err.response.data.message)
+                        next({name:'Home'})
+                    }
+                    
                 }
             )
         },
@@ -56,9 +65,18 @@ import store from '../store'
                     })
                     .catch(
                         err=>{
-                            console.log(err)
-                            alert(err.response)
-                            this.$router.back()
+                            if(err.response.status === 401){
+                                alert('로그인이 필요합니다.')
+                                next({name:'SigninPage'})
+                                return
+                            }else if(err.response.status === 403){
+                                alert('인증된 회원만 글을 읽을 수 있습니다. 관리자에게 권한 요청해주세요.')
+                                next({name:'Home'})
+                            }else{
+                                alert('알 수 없는 오류입니다. 해당사항을 관리자에게 알려주세요.'+'\n'+err.response.data.message)
+                                next({name:'Home'})
+                            }
+                        
                         }
                     )
                 })

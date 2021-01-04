@@ -18,7 +18,7 @@
                     <span class="title">첨부파일:</span>
                 </div>
                 <div class="data">
-                    <span v-if="post.post_files[0].file_name=='null' ? false : true" class="file">
+                    <span v-if="!!post.post_files" class="file">
                         <span v-for="item in post.post_files" :key="item.file_name">
                             <a :href="get_file_anchor(item.file)">{{get_file_name(item.file_name)}}</a><br>
                         </span>

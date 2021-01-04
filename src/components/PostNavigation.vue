@@ -17,13 +17,13 @@
         <div class="pre_next" v-else>
             <div class="postTitle">
                 <span class="title">다음글: </span>
-                <a href="">이전글이 없습니다.</a>
+                <span>다음글이 없습니다.</span>
             </div>
             <div class="writer">
-                <span class="title">운영자</span>
+                <span class="title"></span>
             </div>
             <div class="date">
-                <span class="title">2020-09-25</span>
+                <span class="title"></span>
             </div>
         </div>      
         <div class="pre_next" v-if="!!prev">

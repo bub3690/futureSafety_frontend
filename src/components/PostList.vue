@@ -26,7 +26,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="post in checkedList" :key="post.id">
+                <tr v-for="post in checkedList.reverse()" :key="post.id">
                     <td scope="col" class="tableNumber"><i class="fas fa-star checked"></i></td>
                     <td class="tableTitle" scope="col">
                         <router-link :to="{name:findDetail,
@@ -39,7 +39,7 @@
                     <td scope="col">{{post.date_published}}</td>
                 </tr>
 
-                <tr v-for="post in notChecked" :key="post.id">
+                <tr v-for="post in notChecked.reverse()" :key="post.id">
                     <td scope="col">{{post.id}}</td>
                     <td class="tableTitle" scope="col">
                         <router-link :to="{name:findDetail,

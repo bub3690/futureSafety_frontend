@@ -8,6 +8,7 @@
 <script>
 import api from '@/api'
 import PostCreateForm from '../components/PostCreateForm'
+import store from '../store'
     export default {
         name:'PostCreatePage',
         components:{
@@ -69,10 +70,24 @@ import PostCreateForm from '../components/PostCreateForm'
                         //게시물 작성이 실패한 경우
                         if(err.response.status === 401){
                             alert('로그인이 필요합니다.')
-                            this.$router.push({name:'SigninPage'})
+                            return false;
+                            //this.$router.push({name:'SigninPage'})
+                        }else if(err.response.status === 403){
+                            alert('홈페이지 관리자만 글을 작성할 수 있습니다.')
+                            return false;
+                            /*
+                            this.$router.push({
+                                name:goCategory[payload.category]
+                            })
+                            */
                         }else{
-                            alert(err.response.data.msg)
-                            console.log(err.response)
+                            alert('알 수 없는 오류입니다. 해당사항을 관리자에게 알려주세요.'+'\n'+err.response.data.message)
+                            return false;
+                            /*
+                            this.$router.push({
+                                name:goCategory[payload.category]
+                            })
+                            */
                         }
 
                     })
@@ -80,6 +95,21 @@ import PostCreateForm from '../components/PostCreateForm'
 
             }
         },
+        beforeRouteEnter(to, from, next){
+            const {isAuthorized} = store.getters
+            if(!isAuthorized){
+                alert('로그인이 필요합니다.')
+                next({name:'SigninPage'})
+                return false;
+            }
+            const {isAdmin} = store.state.me.is_admin
+            if(!isAdmin){
+                alert('홈페이지 운영자만 작성할 수 있습니다.')
+                next({name:'Home'})
+                return false;
+            }
+            next()
+        }
     }
 </script>
 

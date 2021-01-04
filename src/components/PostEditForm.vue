@@ -65,6 +65,7 @@
 </template>
 
 <script>
+import bus from '../utils/bus.js'
 import 'codemirror/lib/codemirror.css';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/vue-editor';
@@ -83,7 +84,7 @@ import api from '@/api'
         data(){
             return{
                 title:'',
-                initBody:'dd',
+                initBody:'',
                 editorOptions:{
                     hideModeSwitch:true,
                     hooks:{
@@ -93,11 +94,13 @@ import api from '@/api'
                                 formData.append('file', blob)
                                 api.post('https://futuresafeyhome123.run.goorm.io/api/board/image/', formData).then(res => {
                                 //if (res.data.code !== HTTP_201_CREATED) throw res.data.message
-                                //console.log(res.data)
-                                image_data.push(res.data.id)
-                                callback.call('[image]', 'https://futuresafeyhome123.run.goorm.io/'+res.data.file)    
-                                }, () => alert('시스템에서 오류가 발생하였습니다. 운영자에 문의바랍니다.'))
-                                .catch(errorMsg => alert(errorMsg))
+                                
+                                bus.$emit('send:image_data',res.data.id)
+                                callback.call('[image]', 'https://futuresafeyhome123.run.goorm.io'+res.data.file)
+                                }, () => alert('이미지 불러오기 오류가 발생하였습니다. 운영자에게 문의바랍니다.')
+                                
+                                )
+                                .catch(errorMsg => alert(errorMsg+'\n 시스템 오류가 발생생했습니다.\n 해당 메세지를 운영자에게 문의바랍니다.'))
                             }
                             
                             fileUpload(blob, callback)
@@ -128,9 +131,13 @@ import api from '@/api'
                 this.files.splice(index,1)
                 //파일이 변경되면 true로 해서, 서버에서 object를 새로만듬.
                 this.fileChange=true
+            },insert_image(image){
+                console.log(image)
+                this.image_datas.push(image)
             }
         },
         created(){
+            bus.$on('send:image_data',this.insert_image)
             const category ={
                 'A':'공지사항',
                 'B':'안전 자료실'
@@ -149,8 +156,10 @@ import api from '@/api'
                 }
             }
             */
+        },
+        beforeDestroy(){
+            bus.$off('send:image_data',this.insert_image)
         }
-
     }
 </script>
 

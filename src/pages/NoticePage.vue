@@ -14,16 +14,16 @@
                         class="btn-default">
                             글쓰기
                         </router-link>
+                        <button v-if="!!isDetail&isAuthorized" 
+                            class="btn-default delete right" @click="onDelete">
+                                삭제하기
+                        </button>
                         <router-link v-if="!!isDetail&isAuthorized" 
                         :to="{name:'editPage',params:{postId:getPostId}}"
                             tag="button"
                             class="btn-default edit right">
                                 수정하기
                         </router-link>
-                        <button v-if="!!isDetail&isAuthorized" 
-                        class="btn-default delete right">
-                                삭제하기
-                        </button>
                     </div>
                     <div class="fieldset">
                         <select class="select-default">
@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import api from '../api/index.js'
 import PostList from '../components/PostList'
 import PostDetail from '../components/PostDetail'
 import ButtonCrumb from '../components/ButtonCrumb'
@@ -110,6 +111,29 @@ import {mapActions, mapState, mapGetters} from 'vuex';
                 // route as expected
                 this.$router.push(params)
                 this.dataGet()
+            },
+            onDelete(){
+                const id = this.$route.fullPath.split('/')[3]
+                api.delete('/api/board/'+id+'/')
+                    .then(res=>{
+                        alert('게시물이 성공적으로 삭제되었습니다.')
+                        this.$router.push({name:this.toList()})
+                        return false;
+                    })
+                    .catch(err=>{
+                        if(err.response.status ===401){
+                            alert('로그인이 필요합니다.')
+                            this.$router.push({name:'SigninPage'})
+                            return false;
+                        }else if(err.response.status ===403){
+                            alert('본인의 글 또는 운영자가 아니면 삭제할 수 없습니다.')
+                            return false;
+                        }else{
+                            alert('알 수 없는 오류입니다. 해당사항을 관리자에게 알려주세요.'+'\n'+err.response.data.message)
+                            return false;
+                        }                        
+                    })
+
             },
             ...mapActions([
                 'fetchPostList',
