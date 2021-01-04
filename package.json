@@ -1,0 +1,30 @@
+{
+  "name": "mirae_frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve --host 0.0.0.0 --disableHostCheck true",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@toast-ui/vue-editor": "^2.5.0",
+    "axios": "^0.21.0",
+    "core-js": "^3.6.5",
+    "js-cookie": "^2.2.1",
+    "vue": "^2.6.12",
+    "vue-router": "^3.2.0",
+    "vue-template-compiler": "^2.6.12",
+    "vue-tiny-slider": "^0.1.39",
+    "vuex": "^3.5.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-service": "~4.5.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

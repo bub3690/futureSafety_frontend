@@ -1,0 +1,86 @@
+{"data":[
+    {
+        "postNumber":6,
+        "title":"추석연휴 생활방역 안내",
+        "publishedDate":"2020-09-15",
+        "author":"홍길동",
+        "check":true
+    },
+    {
+        "postNumber":5,
+        "title":"코로나바이러스 예방 등 관련수칙",
+        "publishedDate":"2020-09-15",
+        "author":"홍길동",
+        "check":true
+    },
+    {
+        "postNumber":4,
+        "title":"코로나바이러스 관련 사업장 자체점검표",
+        "publishedDate":"2020-02-24",
+        "author":"홍길동",
+        "check":false
+    },
+    {
+        "postNumber":3,
+        "title":"안전보건교육 개정분 인트라넷에 올려놓았습니다.",
+        "publishedDate":"2020-01-20",
+        "author":"홍길동",
+        "check":false
+    },
+    {
+        "postNumber":2,
+        "title":"2020년 1월 16일 시행 산업안전보건법령 게제",
+        "publishedDate":"2020-01-13",
+        "author":"홍길동",
+        "check":false
+    },
+    {
+        "postNumber":1,
+        "title":"노동부 알림 - 중독 및 밀폐공간 사고 급증 주의요함",
+        "publishedDate":"2019-06-25",
+        "author":"홍길동",
+        "check":false
+    },
+    {
+        "postNumber":7,
+        "title":"추석연휴 생활방역 안내",
+        "publishedDate":"2020-09-15",
+        "author":"홍길동",
+        "check":false
+    },
+    {
+        "postNumber":8,
+        "title":"코로나바이러스 예방 등 관련수칙",
+        "publishedDate":"2020-09-15",
+        "author":"홍길동",
+        "check":false
+    },
+    {
+        "postNumber":9,
+        "title":"코로나바이러스 관련 사업장 자체점검표",
+        "publishedDate":"2020-02-24",
+        "author":"홍길동",
+        "check":false
+    },
+    {
+        "postNumber":10,
+        "title":"안전보건교육 개정분 인트라넷에 올려놓았습니다.",
+        "publishedDate":"2020-01-20",
+        "author":"홍길동",
+        "check":false
+    },
+    {
+        "postNumber":11,
+        "title":"2020년 1월 16일 시행 산업안전보건법령 게제",
+        "publishedDate":"2020-01-13",
+        "author":"홍길동",
+        "check":false
+    },
+    {
+        "postNumber":12,
+        "title":"노동부 알림 - 중독 및 밀폐공간 사고 급증 주의요함",
+        "publishedDate":"2019-06-25",
+        "author":"홍길동",
+        "check":false
+    }   
+]}
