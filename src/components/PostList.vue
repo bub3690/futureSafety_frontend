@@ -5,10 +5,6 @@
                 <span>전체 게시물 수:</span>
                 <span>{{fullcount}}</span>
             </div>
-            <div>
-                <span>전체 페이지 :</span>
-                <span>{{nowCount}}/{{fullcount}}</span>
-            </div>
         </div>
         <table class="listTable">
             <colgroup>

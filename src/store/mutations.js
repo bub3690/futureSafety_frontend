@@ -1,5 +1,5 @@
 import {FETCH_LISTS, SET_ACCESS_TOKEN,SET_MY_INFO,
-    SET_TOKEN_BLANK,SET_INFO_NULL,FETCH_POST,SET_POST_NULL,SET_BOARD_TITLE} from './mutation-types'
+    SET_TOKEN_BLANK,SET_INFO_NULL,FETCH_POST,SET_POST_NULL,SET_BOARD_TITLE,FETCH_USERLIST} from './mutation-types'
 
 import api from '../api/index.js'
 import Cookies from 'js-cookie'
@@ -39,5 +39,8 @@ export default{
     },
     [SET_POST_NULL](state){
         state.post = null
+    },
+    [FETCH_USERLIST](state,payload){
+        state.user_list = payload
     }
 }

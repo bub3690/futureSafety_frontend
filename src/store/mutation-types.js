@@ -6,3 +6,4 @@ export const SET_TOKEN_BLANK='SET_TOKEN_BLANK';
 export const SET_INFO_NULL='SET_INFO_NULL';
 export const FETCH_POST = 'FETCH_POST'
 export const SET_POST_NULL = 'SET_POST_NULL';
+export const FETCH_USERLIST = 'FETCH_USERLIST';

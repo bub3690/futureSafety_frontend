@@ -103,7 +103,13 @@ export function fetchPost({commit}, postId){
 export function setPostNull({commit}){
     commit('SET_POST_NULL')
 }
-
+export function setUserList({commit}){
+    return api.get('/api/user/list')
+        .then(res=>{
+            console.log(res)
+            commit('FETCH_USERLIST',res.data)
+        })
+}
 
 
 export default{
@@ -114,5 +120,6 @@ export default{
     fetchPost,
     setBoardTitle,
     setPostNull,
-    fetchSearchPostList
+    fetchSearchPostList,
+    setUserList
 }

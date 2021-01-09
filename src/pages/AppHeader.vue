@@ -25,9 +25,9 @@
                                 작성한 글
                             </a>
                         </li>
-                        <li class="divide-bar"/>
-                        <li>
-                            <a :href="$router.resolve({name:'Home'}).href">
+                        <li v-if="me.is_admin" class="divide-bar"/>
+                        <li v-if="me.is_admin">
+                            <a :href="$router.resolve({name:'adminPage'}).href">
                                 홈페이지 관리
                             </a>
                         </li>
@@ -68,6 +68,7 @@ export default {
         },
         call_logout(){
             this.logout()
+            this.dropdownActive = false
             this.$router.resolve({name:'Home'})
         },
         ...mapActions(['logout'])

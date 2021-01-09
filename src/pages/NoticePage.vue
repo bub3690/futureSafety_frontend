@@ -141,6 +141,10 @@ import {mapActions, mapState, mapGetters} from 'vuex';
                 }
             },
             onDelete(){
+                var result = confirm("현재 글을 삭제하시겠습니까?");
+                if(!result){
+                    return;
+                }
                 const id = this.$route.fullPath.split('/')[3]
                 api.delete('/api/board/'+id+'/')
                     .then(res=>{

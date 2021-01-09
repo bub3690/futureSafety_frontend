@@ -102,7 +102,7 @@ import store from '../store'
                 next({name:'SigninPage'})
                 return false;
             }
-            const {isAdmin} = store.state.me.is_admin
+            const isAdmin = store.state.me.is_admin
             if(!isAdmin){
                 alert('홈페이지 운영자만 작성할 수 있습니다.')
                 next({name:'Home'})

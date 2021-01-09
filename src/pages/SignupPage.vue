@@ -22,7 +22,7 @@ import api from '../api/index.js'
                     'company':payload.company,
                     'address':payload.email
                 }
-                api.post('https://futuresafeyhome123.run.goorm.io/user/register',post_data)
+                api.post('/api/user/register',post_data)
                 .then(res=>{
                     alert('회원가입이 완료되었습니다.')
                     this.$router.push({name:'SigninPage'})
@@ -43,7 +43,7 @@ import api from '../api/index.js'
 
 <style scoped>
     .SignupPage{
-        width:100%; 
+        width:100%;
         height:100%;
         background:url(/static/bg1.jpg)
     }

@@ -13,6 +13,7 @@ import PostCreatePage from '../pages/PostCreatePage'
 import SignupPage from '../pages/SignupPage'
 import SigninPage from '../pages/SigninPage'
 import PostEditPage from '../pages/PostEditPage'
+import AdminPage from '../pages/AdminPage'
 import bus from '../utils/bus'
 
 Vue.use(VueRouter)
@@ -93,7 +94,8 @@ const routes = [
       // 게시물이 아닌 주소창으로 접근할 경우
       // board/notice/28 : fullPath
       // to에 props 따올것.
-      if(from.fullPath != ('/board/notice/'+to.params.postId) || from.fullPath != ('/board/safety/'+to.params.postId) ){
+      console.log(from.fullPath != '/board/safety/'+to.params.postId)
+      if(from.fullPath != '/board/notice/'+to.params.postId && from.fullPath != '/board/safety/'+to.params.postId ){
         alert('수정하기 버튼을 통해 접근해주세요.')
         next(from)
         return false;
@@ -136,15 +138,25 @@ const routes = [
     path:'/signup',
     name:'SignupPage',
     components:{
-    default:SignupPage,
+    content:SignupPage,
     header:AppHeader},
   },
   {
     path:'/signin',
     name:'SigninPage',
     components:{
-    default:SigninPage,
+    content:SigninPage,
     header:AppHeader},
+  },
+  {
+    path:'/adminSite',
+    name:'adminPage',
+    components:{
+      header:AppHeader,
+      aside:LeftPage,
+      content:AdminPage,
+      footer:FooterPage, 
+    }
   }
 ]
 
