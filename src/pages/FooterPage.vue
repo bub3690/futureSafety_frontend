@@ -1,8 +1,12 @@
 <template>
     <div class="FooterPage">
         <div class="address">
-            <span>[231112] 부산광역시 해운대구 해운대로 123 타운     </span>
-            <span>Tel: +82-12-34-567-8</span>
+            <p>[47846] 부산광역시 동래구 아시아드대로 255번길 9-1</p>
+            <span>제비-401 (온천 3동 1288번지 미도빌딩)</span>
+            <p>
+                <span>Tel: 051-9160-114~5 / </span>
+                <span>FAX: 051-9160-116</span>
+            </p>
         </div>
     </div>
 </template>

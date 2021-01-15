@@ -111,6 +111,21 @@ export function setUserList({commit}){
         })
 }
 
+export function getUserprofileAdmin({commit},user_id){
+    const payload = {
+        user_id : user_id,
+        admin_page : true
+    }
+    return api.post('/api/user/me',payload)
+        .then(res=>{
+            console.log('admin 유저프로필',res.data)
+            commit('SET_USERPROFILE_ADMIN',res.data)
+        })
+
+}
+export function setUserproifileAdminNull({commit}){
+    commit('SET_USERPROFILE_ADMIN_NULL')
+}
 
 export default{
     fetchPostList,
@@ -121,5 +136,7 @@ export default{
     setBoardTitle,
     setPostNull,
     fetchSearchPostList,
-    setUserList
+    setUserList,
+    getUserprofileAdmin,
+    setUserproifileAdminNull
 }

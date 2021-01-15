@@ -59,7 +59,7 @@ import store from '../store'
                     fd.append('post_files',null)
                 }
 
-                api.post('https://futuresafeyhome123.run.goorm.io/api/board/create/',fd)
+                api.post('/api/board/create/',fd)
                     .then(res=>{
                         alert('게시물이 성공적으로 '+payload.category+'에 작성되었습니다.')
                         this.$router.push({

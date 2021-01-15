@@ -1,39 +1,29 @@
 <template>
     <div class="BoardList">
-        <table class="Board">
-            <colgroup>
-                <col width="50%"/>
-                <col width="*"/>
-            </colgroup>
-            <tbody>
-                <tr>
-                    <td class="notice">
-                        <board-components :lists="notice">
-                            <a href="javascript:void(0);" style="font-size:21px;" :class="{'active':active,'titleAnchor':true}" @click="goData('notice')">
-                            공지사항
-                            </a>
-                            |
-                            <a href="javascript:void(0);" style="font-size:21px;" :class="{'active':!active,'titleAnchor':true}" @click="goData('safety')">
-                            안전 자료실
-                            </a >
-                        <span class="plus">
-                            <button @click.prevent="goRouter(goto)" class="btn-default">
-                                더 보기
-                            </button></span>
-                        </board-components>
-                    </td>
-                    <td class="qna">
-                        <board-components :lists="accident">
-                            <span style="color:#2f3033; font-size:21px;">
-                                안전사고 속보
-                            </span >
-                        </board-components>
-                        </td>
-                </tr>
-            </tbody>
-
-
-        </table>
+        <div class="Board">
+            <div class="boardcomponent notice">
+                <board-components :lists="nowList">
+                    <a href="javascript:void(0);" style="font-size:21px;" :class="{'active':active,'titleAnchor':true}" @click="goData('notice')">
+                    공지사항
+                    </a>
+                    |
+                    <a href="javascript:void(0);" style="font-size:21px;" :class="{'active':!active,'titleAnchor':true}" @click="goData('safety')">
+                    안전 자료실
+                    </a >
+                <span class="plus">
+                    <button @click.prevent="goRouter(goto)" class="btn-default">
+                        더 보기
+                    </button></span>
+                </board-components>
+            </div>
+            <div class="boardcomponent qna">
+                <board-components :lists="accident">
+                    <span style="color:#2f3033; font-size:21px;">
+                        안전사고 속보
+                    </span >
+                </board-components>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -66,7 +56,6 @@ import api from '../api/index.js'
                 this.$router.push({name:to})
             },
             goData(to){
-                console.log('2')
                 if(to==='notice'){
                     this.nowList= this.notice
                     this.active=true
@@ -79,26 +68,26 @@ import api from '../api/index.js'
                 }
 
             }
-        }
-        ,
+        },
         created(){
-            api.get('static/json/notice.json').then(
-                res=>{  
-                    this.notice= res.data.data.slice(0,5)
-                }
-            )
-            api.get('static/json/safety.json').then(
+            api.get('/api/board/list/?board_id=A').then(
                 res=>{
-                    this.safetyBoard= res.data.data.slice(0,5)
+                    this.notice= res.data.slice(0,5)
+                    this.nowList = this.notice
+                    //게시물은 5개로 고정, 처음 시작시 list는 notice
                 }
             )
-            api.get('static/json/accident.json').then(
+            api.get('/api/board/list/?board_id=B').then(
                 res=>{
-                    this.accident= res.data.data.slice(0,5)
+                    this.safetyBoard = res.data.slice(0,5)
                 }
             )
-            this.nowList = this.notice
-            //게시물은 5개로 고정, 처음 시작시 list는 notice
+            api.get('/api/board/accident').then(
+                res=>{
+                    this.accident = res.data
+                }
+            )
+
 
         }
 
@@ -108,32 +97,27 @@ import api from '../api/index.js'
 
 <style scoped>
     .BoardList{
-        display:block;
+        display: block;
+        box-sizing: border-box;
         overflow: hidden;
-        width:100%;
+        border: 1px solid #c9c9c9;
+        background: white;
         margin:30px 10px 10px 10px;
+        padding: 0 20px 0 0;
     }
     .Board{
-        border: 1px solid #c9c9c9;
-        background: rgb(224,224,224);
         border-collapse: collapse;
-
     }
-    .Board td.notice{
+    .Board .boardcomponent{
         background: white;
-
-    }   
-    .Board td.safetyBoard{
-        background: white;
+        float:left;
+        width:50%;
     }
-    .Board td.qna{
-        background:  white;
-    }
-    .Board td .plus{
+    .Board  .plus{
         float:right;
         margin-right:10px;
     }
-    .Board td .plus button{
+    .Board  .plus button{
         border-radius: 4px; 
         padding:2px 12px;
         
@@ -148,4 +132,12 @@ import api from '../api/index.js'
     .Board .titleAnchor{
         font-weight:bold;
     }
+    /*
+    @media screen and (max-width:840px) {
+        .Board .boardcomponent{
+            float:none;
+            width:100%;
+        }
+    }
+    */
 </style>

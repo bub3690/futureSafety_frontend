@@ -1,5 +1,5 @@
 <template>
-    <div class="UseradminComponent">
+    <div class="AdminComponent">
         <div class="util">
             <div>
                 <span>전체 회원 수 : </span>
@@ -61,7 +61,7 @@
                         </span>
                     </td>
                     <td scope="col">
-                        <button class="btn-default">
+                        <button @click="onEdit(user.user_id)" class="btn-default">
                             <i class="fas fa-user-cog"></i>
                         </button>
                     </td>
@@ -76,16 +76,22 @@
 <script>
 
     export default {
-        name:'UseradminComponent',
+        name:'AdminComponent',
         props:{
             list:Array,
         },
+        methods:{
+            onEdit(item){
+                console.log('onedit')
+                this.$emit('edit:submit',item)
+            }
+        }
     }
 </script>
 
 <style scoped>
-.UseradminComponent{
-    padding:19px;
+.AdminComponent{
+    padding:19px 70px;
     border:1px solid #e0e0e0;
     background-color:white;
     font-size:14px;

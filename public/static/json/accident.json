@@ -2,31 +2,31 @@
     {
         "postNumber":5,
         "title":"[11/24, 광양] 제철소 내 산소배관 점검 중 폭발사고 발생하여 3명 사망",
-        "publishedDate":"2020.11.24",
+        "date_published":"2020.11.24",
         "anchor":"https://www.kosha.or.kr/kosha/report/kosha_news.do?mode=view&articleNo=419071&article.offset=0&articleLimit=10"
     },
     {
         "postNumber":4,
         "title":"[11/23, 세종] 아파트 외벽 보수공사를 위해 달비계 탑승 중 떨어져 사망",
-        "publishedDate":"2020.11.23",
+        "date_published":"2020.11.23",
         "anchor":"https://www.kosha.or.kr/kosha/report/kosha_news.do?mode=view&articleNo=419049&article.offset=0&articleLimit=10"
     },
     {
         "postNumber":3,
         "title":"[11/20, 남양주] 터널 부석 점검 중 천단부 낙석에 매몰되어 사망",
-        "publishedDate":"2020.11.23",
+        "date_published":"2020.11.23",
         "anchor":"https://www.kosha.or.kr/kosha/report/kosha_news.do?mode=view&articleNo=419048&article.offset=0&articleLimit=10"
     },
     {
         "postNumber":2,
         "title":"[11/20, 청주] 농장 지붕교체 작업 중 선라이트가 부서지면서 떨어져(H=7m) 사망",
-        "publishedDate":"2020.11.23",
+        "date_published":"2020.11.23",
         "anchor":"https://www.kosha.or.kr/kosha/report/kosha_news.do?mode=view&articleNo=419047&article.offset=0&articleLimit=10"
     },
     {
         "postNumber":1,
         "title":"[11/19, 인천] 화장품 ·살균제 제조 사업장 화재사고로 3명 사망, 6명 부상",
-        "publishedDate":"2020.11.20",
+        "date_published":"2020.11.20",
         "anchor":"https://www.kosha.or.kr/kosha/report/kosha_news.do?mode=view&articleNo=419035&article.offset=0&articleLimit=10"
     }
 ]}

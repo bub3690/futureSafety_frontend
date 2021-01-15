@@ -4,5 +4,6 @@ export default{
     posts:[],
     user_list:[],
     boardTitle:null,
-    post:null
+    post:null,
+    userProfileAdmin:null,
 }

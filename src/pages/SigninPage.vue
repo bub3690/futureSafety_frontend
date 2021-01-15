@@ -24,8 +24,8 @@
                         this.$router.push({name:'Home'})    
                     })
                     .catch(err=>{
-                        //서버상에서 에러메세지 구체화 필요
                         console.log(err.response.data)
+                        alert(err.response.data.message)
                     })
                 
             },

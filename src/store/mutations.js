@@ -1,5 +1,6 @@
 import {FETCH_LISTS, SET_ACCESS_TOKEN,SET_MY_INFO,
-    SET_TOKEN_BLANK,SET_INFO_NULL,FETCH_POST,SET_POST_NULL,SET_BOARD_TITLE,FETCH_USERLIST} from './mutation-types'
+    SET_TOKEN_BLANK,SET_INFO_NULL,FETCH_POST,SET_POST_NULL,SET_BOARD_TITLE,FETCH_USERLIST,
+    SET_USERPROFILE_ADMIN,SET_USERPROFILE_ADMIN_NULL} from './mutation-types'
 
 import api from '../api/index.js'
 import Cookies from 'js-cookie'
@@ -42,5 +43,13 @@ export default{
     },
     [FETCH_USERLIST](state,payload){
         state.user_list = payload
+    },
+    [SET_USERPROFILE_ADMIN](state,payload){
+        if(payload){
+            state.userProfileAdmin = payload
+        }
+    },
+    [SET_USERPROFILE_ADMIN_NULL](state){
+        state.userProfileAdmin = null
     }
 }

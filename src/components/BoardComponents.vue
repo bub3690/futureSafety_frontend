@@ -4,9 +4,9 @@
             <slot></slot>
         </div>
         <ul>
-            <li v-for="list in lists" :key="list.title">
-                <a href="#">{{list.title}}</a>
-                <span class="dateGroup">{{list.publishedDate}}</span>
+            <li v-for="list in lists" :key="list.id">
+                <a :href="list.href">{{list.title}}</a>
+                <span class="dateGroup">{{list.date_published}}</span>
             </li>
         </ul>
     </div>
@@ -55,7 +55,7 @@
     font-size: 18px;
     text-decoration: none;
     color:#555555;
-    width:75%;
+    width:85%;
     font-weight: 400;
     line-height:20px;
     text-overflow: ellipsis;
