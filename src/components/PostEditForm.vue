@@ -66,6 +66,7 @@
 
 <script>
 import bus from '../utils/bus.js'
+import ListMixin from '../mixins/ListMixins.js';
 import 'codemirror/lib/codemirror.css';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/vue-editor';
@@ -92,11 +93,11 @@ import api from '@/api'
                             let fileUpload = (blob) => {
                                 const formData = new FormData()
                                 formData.append('file', blob)
-                                api.post('https://futuresafeyhome123.run.goorm.io/api/board/image/', formData).then(res => {
+                                api.post('/api/board/image/', formData).then(res => {
                                 //if (res.data.code !== HTTP_201_CREATED) throw res.data.message
                                 
                                 bus.$emit('send:image_data',res.data.id)
-                                callback.call('[image]', 'https://futuresafeyhome123.run.goorm.io'+res.data.file)
+                                callback.call('[image]', 'https://futuresafetyhome80.run.goorm.io/'+res.data.file)
                                 }, () => alert('이미지 불러오기 오류가 발생하였습니다. 운영자에게 문의바랍니다.')
                                 
                                 )
@@ -159,7 +160,8 @@ import api from '@/api'
         },
         beforeDestroy(){
             bus.$off('send:image_data',this.insert_image)
-        }
+        },
+        mixins:[ListMixin],
     }
 </script>
 

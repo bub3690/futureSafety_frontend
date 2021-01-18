@@ -14,6 +14,7 @@ import SignupPage from '../pages/SignupPage'
 import SigninPage from '../pages/SigninPage'
 import PostEditPage from '../pages/PostEditPage'
 import AdminPage from '../pages/AdminPage'
+import MyPage from '../pages/MyPage'
 import bus from '../utils/bus'
 
 Vue.use(VueRouter)
@@ -156,6 +157,16 @@ const routes = [
       aside:LeftPage,
       content:AdminPage,
       footer:FooterPage, 
+    }
+  },
+  {
+    path:'/profile',
+    name:'profilePage',
+    components:{
+      header:AppHeader,
+      aside:LeftPage,
+      content:MyPage,
+      footer:FooterPage,   
     }
   }
 ]

@@ -35,6 +35,7 @@
 <script>
 import '@toast-ui/editor/dist/toastui-editor-viewer.css';
 import { Viewer } from '@toast-ui/vue-editor';
+import ListMixin from '../mixins/ListMixins.js';
     export default {
         name:'PostView',
         props:{
@@ -53,7 +54,7 @@ import { Viewer } from '@toast-ui/vue-editor';
         },
         methods:{
             get_file_anchor(file){
-                const file_url = 'https://futuresafeyhome123.run.goorm.io/'+file
+                const file_url = 'https://futuresafetyhome80.run.goorm.io/'+file
                 return file_url
             },
             get_file_name(file){
@@ -61,7 +62,8 @@ import { Viewer } from '@toast-ui/vue-editor';
                 return file_name
             }
 
-        }
+        },
+        mixins:[ListMixin],
     }
 </script>
 

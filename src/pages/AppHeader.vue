@@ -16,13 +16,8 @@
                     </a>
                     <ul class="dropdown-content">
                         <li>
-                            <a :href="$router.resolve({name:'Home'}).href">
+                            <a :href="$router.resolve({name:'profilePage'}).href">
                                 프로필 변경
-                            </a>
-                        </li>
-                        <li>
-                            <a :href="$router.resolve({name:'Home'}).href">
-                                작성한 글
                             </a>
                         </li>
                         <li v-if="me.is_admin" class="divide-bar"/>
@@ -135,6 +130,7 @@ div.explain{
     cursor:pointer;
 }
 a{
+    
     text-decoration: none;
     outline:none;
 }

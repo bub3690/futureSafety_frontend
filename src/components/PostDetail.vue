@@ -8,6 +8,7 @@
 <script>
 import PostView from './PostView'
 import PostNavigation from './PostNavigation'
+
 import {mapActions,mapState,mapMutations} from 'vuex'
 import store from '../store'
     export default {
@@ -82,9 +83,9 @@ import store from '../store'
                 })
         },
         created(){
-            console.log(this.postId)
-        }
-        
+            //console.log(this.postId)
+        },
+
     }
 </script>
 

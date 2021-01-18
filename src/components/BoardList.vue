@@ -82,7 +82,7 @@ import api from '../api/index.js'
                     this.safetyBoard = res.data.slice(0,5)
                 }
             )
-            api.get('/api/board/accident').then(
+            api.get('/api/board/accident/').then(
                 res=>{
                     this.accident = res.data
                 }

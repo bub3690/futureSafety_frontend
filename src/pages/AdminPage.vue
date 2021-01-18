@@ -41,7 +41,7 @@ export default {
                     )
             },
             save(payload){
-                console.log(payload)
+                //console.log(payload)
                 api.patch('/api/user/me',payload)
                     .then(res=>{
                         alert(res.data.message)

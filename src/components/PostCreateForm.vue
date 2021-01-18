@@ -85,10 +85,10 @@ import api from '@/api'
                             let fileUpload = (blob) => {
                                 const formData = new FormData()
                                 formData.append('file', blob)
-                                api.post('https://futuresafeyhome123.run.goorm.io/api/board/image/', formData).then(res => {
+                                api.post('/api/board/image/', formData).then(res => {
                                 //if (res.data.code !== HTTP_201_CREATED) throw res.data.message
                                 
-                                callback.call('[image]', 'https://futuresafeyhome123.run.goorm.io/'+res.data.file)
+                                callback.call('[image]', 'https://futuresafetyhome80.run.goorm.io/'+res.data.file)
                                 bus.$emit('send:image_data',res.data.id)
                                 }, () => alert('이미지 불러오기 오류가 발생하였습니다. 운영자에게 문의바랍니다.')
                                 

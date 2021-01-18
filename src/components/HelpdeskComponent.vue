@@ -6,8 +6,8 @@
                 <i class="fas fa-phone-volume"></i>
             </div>
             <div class="number">
-                <p>010-0000-0000</p>
-                <p>010-1234-5678</p>
+                <p>051-9160-114</p>
+                <p>051-9160-115</p>
             </div>
         </div>
     </div>

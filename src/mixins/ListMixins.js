@@ -5,6 +5,7 @@ export default {
     mounted(){
         setTimeout(function(){
             bus.$emit('end:spinner');
-        },500)
+        },300)
     },
+
 }

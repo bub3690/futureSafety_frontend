@@ -28,15 +28,15 @@ export function fetchSearchPostList({commit},payload){
     // NOTICE 페이지에서는 COMPUTED에서 구분해야함.
     var sever_payload = '?board_id='+matching1[payload['board']]
     if(payload['type']==='title'){
-        sever_payload = sever_payload+'&?title='+payload['data'] 
+        sever_payload = sever_payload+'&title='+payload['data'] 
     }else if(payload['type']==='name'){
-        sever_payload = sever_payload+'&?author__name='+payload['data'] 
+        sever_payload = sever_payload+'&author__name='+payload['data'] 
     }
 
     bus.$emit('start:spinner');
     api.get('/api/board/list/'+sever_payload).then(
         res=>{
-            //console.log(res)
+            console.log(res)
             const mutation_payload=res.data
             commit('FETCH_LISTS',mutation_payload)  
             setTimeout(function(){
@@ -55,7 +55,7 @@ export function setBoardTitle({commit},payload){
 export function signin({commit},payload){
     const post_data=payload
     //username,password가 담겨있음.
-    return api.post('/api/user/login',post_data)
+    return api.post('/api/user/login/',post_data)
         .then(res=>{
                     // res - data - token : 84~~~
                     const {token} = res.data
@@ -79,7 +79,7 @@ export function signinByToken({commit}, token){
         .then(res=>{
             //console.log(res)
             commit('SET_MY_INFO',res.data)
-            // 예외처리는?
+
         })
 
 }
@@ -90,11 +90,13 @@ export function logout({commit}){
 }
 
 export function fetchPost({commit}, postId){
+    bus.$emit('start:spinner')
     return api.get('/api/board/'+postId)
         .then(res=>{
             //console.log(res)
             // 받아온 post 데이터를 commit해줌.
             commit('FETCH_POST',res.data)
+            //bus.$emit('start:spinner')
             // 예외처리는 각 요청하는 부분에서.
         })
 
