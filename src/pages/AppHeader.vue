@@ -1,6 +1,6 @@
 <template>
     <div class="app-header">
-        <a class="logo" href="http://localhost:8080/">
+        <a class="logo" :href="$router.resolve({name:'Home'}).href">
         </a>
         <div class="separator"></div>
         <div class="explain">

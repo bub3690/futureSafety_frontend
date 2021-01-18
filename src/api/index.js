@@ -1,4 +1,4 @@
 import axios from 'axios'
 export default axios.create({
-    baseURL:'https://futuresafetyhome80.run.goorm.io'
+    baseURL:'https://futuresafetyhome80.run.goorm.io',
 });
