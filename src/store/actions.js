@@ -55,7 +55,7 @@ export function setBoardTitle({commit},payload){
 export function signin({commit},payload){
     const post_data=payload
     //username,password가 담겨있음.
-    return api.post('/api/user/login/',post_data)
+    return api.post('/api/user/login',post_data)
         .then(res=>{
                     // res - data - token : 84~~~
                     const {token} = res.data
