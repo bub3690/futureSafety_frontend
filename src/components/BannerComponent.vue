@@ -2,7 +2,7 @@
     <div class="BannerComponent">
         <ul>
             <li>
-                <a href="https://edu.kosha.or.kr/education/main.do" class="portal">
+                <a href="http://www.moel.go.kr/local/busan/index.do" class="portal">
                     <img src="/static/banners/banner1-고용노동청.jpg">
                 </a>
             </li>

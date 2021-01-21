@@ -10,9 +10,12 @@ export function fetchPostList({commit},payload){
     const sever_payload = matching1[payload]
 
     bus.$emit('start:spinner');
+    console.log('패치 list')
+    
     api.get('/api/board/list/?board_id='+sever_payload).then(
         res=>{
-            //console.log(res)
+
+            console.log(res.data)
             const mutation_payload=res.data
             commit('FETCH_LISTS',mutation_payload)  
             setTimeout(function(){
@@ -28,13 +31,14 @@ export function fetchSearchPostList({commit},payload){
     // NOTICE 페이지에서는 COMPUTED에서 구분해야함.
     var sever_payload = '?board_id='+matching1[payload['board']]
     if(payload['type']==='title'){
-        sever_payload = sever_payload+'&title='+payload['data'] 
+        sever_payload = sever_payload+'&title='+payload['data']
     }else if(payload['type']==='name'){
         sever_payload = sever_payload+'&author__name='+payload['data'] 
     }
-
+    // ie 에서 작동이 안되서 따로 변수로 담아서 get함.
+    const get_url = encodeURI('/api/board/list/'+sever_payload)
     bus.$emit('start:spinner');
-    api.get('/api/board/list/'+sever_payload).then(
+    api.get(get_url).then(
         res=>{
             console.log(res)
             const mutation_payload=res.data
@@ -77,10 +81,11 @@ export function signinByToken({commit}, token){
     //2. 사용자의 정보를 받아온 후 스토어에 커밋한다.
     return api.get('/api/user/me')
         .then(res=>{
-            //console.log(res)
+            //console.log('문제없음.')
             commit('SET_MY_INFO',res.data)
 
         })
+
 
 }
 
@@ -95,6 +100,8 @@ export function fetchPost({commit}, postId){
         .then(res=>{
             //console.log(res)
             // 받아온 post 데이터를 commit해줌.
+            //console.log('패치 포스트')
+            //console.log(res.data)
             commit('FETCH_POST',res.data)
             //bus.$emit('start:spinner')
             // 예외처리는 각 요청하는 부분에서.
@@ -108,7 +115,7 @@ export function setPostNull({commit}){
 export function setUserList({commit}){
     return api.get('/api/user/list')
         .then(res=>{
-            console.log(res)
+            //console.log(res)
             commit('FETCH_USERLIST',res.data)
         })
 }
@@ -120,7 +127,7 @@ export function getUserprofileAdmin({commit},user_id){
     }
     return api.post('/api/user/me',payload)
         .then(res=>{
-            console.log('admin 유저프로필',res.data)
+            //console.log('admin 유저프로필',res.data)
             commit('SET_USERPROFILE_ADMIN',res.data)
         })
 

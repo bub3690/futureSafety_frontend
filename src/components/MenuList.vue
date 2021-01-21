@@ -3,11 +3,10 @@
         <input @click="listClick()" type="checkbox" :id="'action2'+num">
         <label :for="'action2'+num">
             <li :class="{'active':listActive}">
-                <a><i :class="emoji"></i></a>
-                <a>{{subject}}</a>
-                <a v-if="!listActive"><i class="fas fa-angle-down"></i></a>
-                <a v-else><i class="fas fa-angle-up"></i></a>
-                
+                <span><i :class="emoji"></i></span>
+                <span>{{subject}}</span>
+                <span v-if="!listActive"><i class="fas fa-angle-down"></i></span>
+                <span v-else><i class="fas fa-angle-up"></i></span>
                 <ul>
                     <slot></slot>
                 </ul>
@@ -51,7 +50,7 @@
         text-align: left;
         cursor: pointer;
     }
-    div.MenuList >label> li a{
+    div.MenuList >label> li span{
         display:inline-block;
         padding:8px 5px;
         text-decoration: none;
@@ -59,10 +58,10 @@
         font-family: NanumGothic;
         font-size: 14px;
     }
-    div.MenuList >label> li.active > a{
+    div.MenuList >label> li.active > span{
         color:white;
     }
-    div.MenuList  >label> li a >i{
+    div.MenuList  >label> li span >i{
         font-size:18px;
     }
     li.active{
@@ -72,7 +71,7 @@
     li:hover:not(.active){
         background: #3d3e42;
     }
-    li:hover:not(.active) a{
+    li:hover:not(.active) span{
         color:white;    
     }
 
@@ -80,15 +79,16 @@
 /* 세부 메뉴 */
     div.MenuList >label> li > ul{
         background: #3d3e42;
-        color:#999999;
-        margin-top:10px;
+        margin-top:12px;
         padding:0;
     }
     div.MenuList >label> li ul li{
-        padding:10px 0 2px 10px;
+        padding:10px 0 2px 15px;
     }
     div.MenuList >label> li ul li a{
         font-size:12px;
+        color:#999999;
+        text-decoration: none;
     }
     li:not(.active) > ul{
         display: none;

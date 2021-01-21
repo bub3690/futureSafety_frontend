@@ -14,8 +14,8 @@
                 </carousel-slide>
             </carousel>
             -->         
-                <board-list></board-list>
-                <banner-component></banner-component>
+            <board-list></board-list>
+            <banner-component></banner-component>
         </div>
 </template>
 

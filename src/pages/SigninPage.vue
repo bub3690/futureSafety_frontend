@@ -8,6 +8,7 @@
     import SigninForm from '../components/SigninForm.vue'
     import api from '../api/index.js'
     import {mapActions} from 'vuex'
+    import ListMixin from '../mixins/ListMixins.js';
     export default {
         name:'SigninPage',
         components: { SigninForm },
@@ -29,8 +30,10 @@
                     })
                 
             },
-            ...mapActions(['signin'])
-        }
+            ...mapActions(['signin']),
+
+        },
+        mixins:[ListMixin],
 
     }
 </script>

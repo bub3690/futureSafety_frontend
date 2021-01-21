@@ -2,10 +2,10 @@
     <div class="MenuComponents">
         <input @click="move({name:to})" type="checkbox" :id="'action1'+num">
         <label :for="'action1'+num">
-            <li>
-                <a><i :class="emoji" ></i></a>
-                <a><slot></slot></a>
-            </li>
+                <li>
+                <span><i :class="emoji" ></i></span>
+                <span><slot></slot></span>
+                </li>    
         </label>
     </div>
 </template>
@@ -95,7 +95,7 @@ import bus from '../utils/bus.js'
         text-align: left;
         cursor: pointer;
     }
-    div.MenuComponents >label> li a{
+    div.MenuComponents >label> li span{
         display:inline-block;
         padding:8px 5px;
         text-decoration: none;
@@ -103,10 +103,10 @@ import bus from '../utils/bus.js'
         font-family: NanumGothic;
         font-size: 14px;
     }
-    div.MenuComponents >label> li.active > a{
+    div.MenuComponents >label> li.active > span{
         color:white;
     }
-    div.MenuComponents   >label> li a >i{
+    div.MenuComponents   >label> li span >i{
         font-size:18px;
     }
     li.active{
@@ -116,7 +116,7 @@ import bus from '../utils/bus.js'
     li:hover:not(.active){
         background: #3d3e42;
     }
-    li:hover:not(.active) a{
+    li:hover:not(.active) span{
         color:white;    
     }
 </style>

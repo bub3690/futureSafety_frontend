@@ -29,9 +29,9 @@ import store from '../store'
         },
         beforeRouteEnter (to, from, next){
             //데이터 받아오는것 여기 쓰기 . /board/notice/6
-            console.log('enter')
+            //console.log('enter')
             var dataArray = to.fullPath.split('/')
-            console.log(dataArray)
+            //console.log(dataArray)
             //0번 빈칸, 1번 board, 2번 notice
             store.dispatch('fetchPost',dataArray[3])
             .then( ()=>{
@@ -39,7 +39,9 @@ import store from '../store'
             })
             .catch(
                 err=>{
+                    console.log('에러',err.response)
                     if(err.response.status === 401){
+                        console.log(err.response)
                         alert('로그인이 필요합니다.')
                         next({name:'SigninPage'})
                         return
@@ -67,6 +69,7 @@ import store from '../store'
                     .catch(
                         err=>{
                             if(err.response.status === 401){
+                                console.log(err.response)
                                 alert('로그인이 필요합니다.')
                                 next({name:'SigninPage'})
                                 return

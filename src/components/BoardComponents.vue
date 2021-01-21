@@ -5,7 +5,10 @@
         </div>
         <ul>
             <li v-for="list in lists" :key="list.id">
-                <a :href="list.href">{{list.title}}</a>
+                <!-- 안전사고 속보에는 href 속성이 있지만, 공지사항 쪽에는 없기에, v-if와 goto로 구별함 -->
+                <a v-if="list.href" :href="list.href">{{list.title}}</a>
+                <router-link v-else-if="goto==='notice'" :to="{name:'NoticeDetail',params:{postId:list.id.toString()}}">{{list.title}}</router-link>
+                <router-link v-else-if="goto==='safety'" :to="{name:'SafetyDetail',params:{postId:list.id.toString()}}">{{list.title}}</router-link>
                 <span class="dateGroup">{{list.date_published}}</span>
             </li>
         </ul>
@@ -16,7 +19,8 @@
     export default {
         name:"BoardComponents",
         props:{
-            lists:Array
+            lists:Array,
+            goto:String
         },
     }
 </script>

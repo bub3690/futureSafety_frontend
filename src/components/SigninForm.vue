@@ -6,7 +6,8 @@
             <div class="idpw"><input type="password" v-model="password" placeholder="비밀번호를 입력해주세요." class="search-default"/></div>
             <div class="idpw"><button type="submit" class="btn-default submit">로그인</button></div>
             <div class="signup">
-                <p>아직 회원이 아니신가요?</p><router-link :to="{name:'SignupPage'}">회원가입 하러가기</router-link>
+                <p>아직 회원이 아니신가요?</p>
+                <router-link :to="{name:'SignupPage'}">회원가입 하러가기</router-link>
             </div>
         </form>
     </div>

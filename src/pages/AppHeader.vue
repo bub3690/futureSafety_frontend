@@ -75,9 +75,8 @@ export default {
 .app-header{
     height:54px;
     width:100%;
-    background: rgb(52 142 219);
+    background: #348EDB;
     color:white;
-    font-family: 'Han Sans',본고딕;
 }
 .app-header .navbar{
     width:200px;
@@ -87,7 +86,7 @@ export default {
     position: relative;
 }
 .app-header a.logo{
-    background:url('/static/comlogo2.png') no-repeat;
+    background:url('/static/comlogo-blue.PNG') no-repeat;
     background-size:contain;
     margin-left:10px;
     width:120px;
@@ -125,7 +124,6 @@ div.explain{
     height: 100%;
     display:flex;
     align-items: center;
-    font-family: 'Han Sans',본고딕;
     color:white;
     cursor:pointer;
 }

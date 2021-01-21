@@ -8,17 +8,22 @@
             num='1' subject="주요사업">
                 <li>
                     <a :href="$router.resolve({name:'Home'}).href">
-                        안전관리대행 • 회원제
+                        안전관리대행
                     </a>
                 </li>
                 <li>
                     <a :href="$router.resolve({name:'Home'}).href">
-                        PSM
+                        안전보건관리 담당자 대행
                     </a>
                 </li>
                 <li>
                     <a :href="$router.resolve({name:'Home'}).href">
                         유해위험 방지계획서
+                    </a>
+                </li>
+                <li>
+                    <a :href="$router.resolve({name:'Home'}).href">
+                        회원제 관리
                     </a>
                 </li>
             </menu-list>
@@ -95,9 +100,7 @@ import MenuList from '../components/MenuList.vue'
         font-family: NanumGothic;
         font-size: 14px;
     }
-    div.MenuComponents >label> li.active > a{
-        color:white;
-    }
+
     div.MenuComponents   >label> li a >i{
         font-size:18px;
     }

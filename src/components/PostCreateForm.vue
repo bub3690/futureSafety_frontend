@@ -116,8 +116,13 @@ import api from '@/api'
                 this.$emit('submit',{title,category,check,files,html,image_datas})
              },
             processFile(event){
-                this.files.push(event.target.files[0])
-                this.$refs.fileUpload.value=''
+                //console.log(event.target.files[0])
+                // ie에서는 value ='' 넣을때 processFile이 다시호출됨.. if로 null일때는 작동 안하게함.
+                if(!!event.target.files[0]){
+                    this.files.push(event.target.files[0])
+                    console.log(this.files)
+                    this.$refs.fileUpload.value=''
+                }
             },goBack(){
                 this.$router.push({name:'Home'})
             },removeFile(index){
