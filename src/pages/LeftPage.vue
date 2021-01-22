@@ -7,24 +7,24 @@
             <menu-list emoji="fas fa-briefcase" 
             num='1' subject="주요사업">
                 <li>
-                    <a :href="$router.resolve({name:'Home'}).href">
+                    <router-link :to="{name:'category3'}">
                         안전관리대행
-                    </a>
+                    </router-link>
                 </li>
                 <li>
-                    <a :href="$router.resolve({name:'Home'}).href">
+                    <router-link :to="{name:'category3'}">
                         안전보건관리 담당자 대행
-                    </a>
+                    </router-link>
                 </li>
                 <li>
-                    <a :href="$router.resolve({name:'Home'}).href">
+                    <router-link :to="{name:'category3'}">
                         유해위험 방지계획서
-                    </a>
+                    </router-link>
                 </li>
                 <li>
-                    <a :href="$router.resolve({name:'Home'}).href">
+                    <router-link :to="{name:'category3'}">
                         회원제 관리
-                    </a>
+                    </router-link>
                 </li>
             </menu-list>
             <menu-components emoji="far fa-clipboard" :isboard="true" to='notice'  num='3' >

@@ -6,8 +6,6 @@ import AppHeader from '../pages/AppHeader'
 import LeftPage from '../pages/LeftPage'
 import ContentPage from '../pages/ContentPage'  
 import NoticePage from '../pages/NoticePage'
-import PostDetail from '../components/PostDetail'
-import PostList from '../components/PostList'
 import FooterPage from '../pages/FooterPage'
 import PostCreatePage from '../pages/PostCreatePage'
 import SignupPage from '../pages/SignupPage'
@@ -15,7 +13,15 @@ import SigninPage from '../pages/SigninPage'
 import PostEditPage from '../pages/PostEditPage'
 import AdminPage from '../pages/AdminPage'
 import MyPage from '../pages/MyPage'
+import BusinessPage from '../pages/BusinessPage'
 import bus from '../utils/bus'
+
+//컴포넌트
+import PostDetail from '../components/PostDetail'
+import PostList from '../components/PostList'
+
+//카테고리
+import CategoryComponent3 from '../components/category/CategoryComponent3'
 
 Vue.use(VueRouter)
 
@@ -63,6 +69,23 @@ const routes = [
         props:true,
       }
     ]
+  },
+  {
+    path:'/business',
+    components:{
+      header:AppHeader,
+      aside:LeftPage,
+      content:BusinessPage,
+      footer:FooterPage
+    },
+    children:[
+      {
+        path:'/business/category3',
+        name:'category3',
+        component:CategoryComponent3
+      },
+    ]
+
   },
   {
     path:'/board/create',

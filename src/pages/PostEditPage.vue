@@ -68,7 +68,7 @@ import {mapState} from 'vuex'
                     fd.append('post_files',null)
                 }
 
-                api.put('/api/board/'+this.postId+'/',fd)
+                api.put('/api/board/'+this.postId,fd)
                     .then(res=>{
                         alert('게시물이 성공적으로 '+payload.category+'에 작성되었습니다.')
                         this.$router.push({

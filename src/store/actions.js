@@ -11,7 +11,7 @@ export function fetchPostList({commit},payload){
 
     bus.$emit('start:spinner');
     console.log('패치 list')
-    
+    //console.log()
     api.get('/api/board/list/?board_id='+sever_payload).then(
         res=>{
 

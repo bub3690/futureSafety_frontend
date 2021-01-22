@@ -146,11 +146,12 @@ import {mapActions, mapState, mapGetters} from 'vuex';
                     return;
                 }
                 const id = this.$route.fullPath.split('/')[3]
-                api.delete('/api/board/'+id+'/')
+                api.delete('/api/board/'+id)
                     .then(res=>{
                         alert('게시물이 성공적으로 삭제되었습니다.')
                         this.$router.push({name:this.toList()})
-                        return false;
+                        this.dataGet()
+                        return true;
                     })
                     .catch(err=>{
                         if(err.response.status ===401){
