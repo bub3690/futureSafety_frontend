@@ -5,9 +5,13 @@
                 <span class="title">유해위험방지 계획서</span> 
             </h2>
             <div class="button-category">
-                <button class="category btn-default active">유해위험방지 계획서</button>
-                <button class="category btn-default">제출대상 13개 업종</button>
-                <button class="category btn-default">공단 공문</button>
+                <button v-for="item in AllCategory['category3']" :key="item"
+                @click="goClick(AllCategory['category3'].indexOf(item))" 
+                :class="{
+                    'category btn-default active':AllCategory['category3'].indexOf(item)===clickedIndex,
+                    'category btn-default':AllCategory['category3'].indexOf(item)!=clickedIndex}">
+                    {{item}}
+                </button>
             </div>
         </div>
         <router-view></router-view>
@@ -17,7 +21,20 @@
 <script>
     export default {
         name:'BusinessPage',
-
+        data(){
+            return{
+                AllCategory:{
+                    'category3':['유해위험방지 계획서','제출대상 13개 업종','공단 공문']
+                },
+                clickedIndex:0,
+                
+            }
+        },
+        methods:{
+            goClick(indexClicked){
+                this.clickedIndex = indexClicked
+            }
+        }
     }
 </script>
 
@@ -53,6 +70,10 @@
     float:left;
     width:25%;
     height:42px;
+}
+.button-category .category.active{
+    background: #3498db;
+    color:#ffffff;
 }
 .category-explain::after{
     content: '';
