@@ -23,7 +23,7 @@
 
 <style scoped>
 .BusinessPage{   
-    background: #f7f9fa;
+    background: #ffffff;
     box-sizing: border-box;
     position:relative;
     min-height:668px;
