@@ -1,7 +1,11 @@
 <template>
     <div class="CategoryComponent3 category-main">
-        <div class="content">
-
+        <div class="content cate1" v-show="categoryId==0">
+			<div class="content-header">
+				<h1>[ 제조업 유해·위험방지 계획서 작성 ]
+				<a class="download" href="#"><i class="fas fa-file-pdf"></i></a>
+				</h1>
+			</div>
             <div class="content-element">
                 <p class="title">◉ 법적근거</p>
                 <div class="content-box">
@@ -243,7 +247,61 @@
                     </div>
                 </div>                       
             </div>
-        </div>
+			
+		</div>
+		<div class="content cate2" v-show="categoryId==1">
+        	<div class="content-header">
+				<h1>[ 제출대상 13개 제조업종 ] 
+					<a class="download" href="#"><i class="fas fa-file-pdf"></i></a>
+				</h1>
+				<p class="subtitle middle">(산업안전보건법(제48조제1항, 동법시행령제33조의2, 한국표준산업분류표 10차 관련)</p>
+				<p class="subtitle middle purple">( 각 세부업종은 첨부파일을 참조 부탁드립니다. )</p>
+			</div>
+            <div class="content-element">
+                <p class="title">① 식료품 제조업 (10***)</p>
+			</div>
+			<div class="content-element">
+                <p class="title">② 목재 및 나무제품 제조업 (16***) - 가구제외</p>
+			</div>			<div class="content-element">
+                <p class="title">③ 고무제품 및 플라스틱제품 제조업 (22***)</p>
+			</div>			<div class="content-element">
+                <p class="title">④ 비금속광물제품 제조업 (23***)</p>
+			</div>			<div class="content-element">
+                <p class="title">⑤ 1차 금속 제조업 (24***)</p>
+			</div>			<div class="content-element">
+                <p class="title">⑥ 금속가공제품 제조업 (25***) - 기계 및 가구 제외</p>
+			</div>			<div class="content-element">
+                <p class="title">⑦ 기타 기계 및 장비 제조업 (29***)</p>
+			</div>			<div class="content-element">
+                <p class="title">⑧ 자동차 및 트레일러 제조업 (30***)</p>
+			</div>			<div class="content-element">
+                <p class="title">⑨ 가구 제조업 (32***)</p>
+			</div>			<div class="content-element">
+                <p class="title">⑩ 기타 제품 제조업 (33***)</p>
+			</div>			<div class="content-element">
+                <p class="title">⑪ 화학물질 및 화학제품 제조업;의약품 제외 (20***)</p>
+			</div>			<div class="content-element">
+                <p class="title">⑫ 반도체 제조업 (261**)</p>
+			</div>			<div class="content-element">
+                <p class="title">⑬ 전자부품 제조업 (262**)</p>
+			</div>
+			 
+		</div>
+		<div class="content cate3" v-show="categoryId==2">
+        	<div class="content-header">
+				<h1>[ 공단 공문 ]
+					<a class="download" href="#"><i class="fas fa-file-pdf"></i></a>
+				</h1>
+			</div>
+            <div class="content-element">
+                <p class="title">◉ 공단 공문 스캔본</p>
+				<div class="content-box">
+					<p>
+                        <img class="content-image" src="/static/business/public_scan.jpg">
+                    </p>
+				</div>
+			</div>
+		</div>
     </div>
 </template>
 
@@ -268,7 +326,11 @@
     text-align: left;
     margin:0 0 20px 0;
 }
-
+.download{
+	color: red; text-decoration: none;
+	
+}
+	
 .content-box{
     font-size:17px;
     text-align:justify;
@@ -282,7 +344,9 @@
         border:1px solid #eee;
         background: #fff;
 }
-
+.middle{
+		text-align:center;
+	}
 .content-box table{
     border:1px solid #000000;
     border-collapse: collapse;
@@ -292,6 +356,7 @@
     border-bottom: 2px solid #000000;
     text-align: center;
 }
+
 
 .redpoint{
     color:#FF3B3B;

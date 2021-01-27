@@ -2,7 +2,7 @@
     <div class="BusinessPage">
         <div class="category-explain">
             <h2 class="title-header">
-                <span class="title">유해위험방지 계획서</span> 
+                <span class="title">{{title}}</span> 
             </h2>
             <div class="button-category">
                 <button v-for="item in AllCategory['category3']" :key="item"
@@ -14,7 +14,7 @@
                 </button>
             </div>
         </div>
-        <router-view></router-view>
+        <router-view :categoryId="clickedIndex"></router-view>
     </div>
 </template>
 
@@ -24,8 +24,13 @@
         data(){
             return{
                 AllCategory:{
-                    'category3':['유해위험방지 계획서','제출대상 13개 업종','공단 공문']
+					'category1':[],
+					'category2':[],
+                    'category3':['유해위험방지 계획서','제출대상 13개 업종','공단 공문'],
+					'category4':[],
                 },
+				clickedCategory:null,
+				title:'',
                 clickedIndex:0,
                 
             }
@@ -34,7 +39,25 @@
             goClick(indexClicked){
                 this.clickedIndex = indexClicked
             }
-        }
+        },
+		mounted(){
+			const titleMatch = {
+			'category1' : '안전관리대행',
+			'category2' : '안전보건 관리담당자 대행',
+			'category3' : '유해위험방지 계획서',
+			'category4' : '회원제관리'
+			}
+			//category에 따라 메뉴 설정위해서 router 분해
+			var dataArray = this.$route.path.split('/')
+			// 2 : category3
+			//console.log(dataArray)
+			
+            //var boardName = dataArray[2]
+			//초기화 하기
+			this.clickedCategory = dataArray[2]
+			this.title = titleMatch[dataArray[2]]
+			this.clickedIndex = 0
+		}
     }
 </script>
 

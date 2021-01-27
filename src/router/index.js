@@ -22,6 +22,8 @@ import PostList from '../components/PostList'
 
 //카테고리
 import CategoryComponent3 from '../components/category/CategoryComponent3'
+import CategoryComponent2 from '../components/category/CategoryComponent2'
+import CategoryComponent1 from '../components/category/CategoryComponent1'
 
 Vue.use(VueRouter)
 
@@ -79,7 +81,17 @@ const routes = [
       footer:FooterPage
     },
     children:[
-      {
+	{
+        path:'/business/category1',
+        name:'category1',
+        component:CategoryComponent1
+	},
+	{
+        path:'/business/category2',
+        name:'category2',
+        component:CategoryComponent2
+	},
+	{
         path:'/business/category3',
         name:'category3',
         component:CategoryComponent3
