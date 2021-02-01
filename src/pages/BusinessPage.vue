@@ -24,10 +24,10 @@
         data(){
             return{
                 AllCategory:{
-					'category1':[],
+					'category1':['안전관리자'],
 					'category2':['안전보건관리담당자교육 안내', '안전보건관리담당자 선임계'],
                     'category3':['유해위험방지 계획서','제출대상 13개 업종','공단 공문'],
-					'category4':[],
+					'category4':['자율안전관리 밀착지원 사업'],
                 },
 				clickedCategory:null,
 				title:'',
@@ -40,7 +40,6 @@
                 this.clickedIndex = indexClicked
             },
 			dataUpdate(){
-				console.log(1)
 			//category에 따라 메뉴 설정위해서 router 분해
 			
 			var dataArray = this.$route.path.split('/')
@@ -54,7 +53,7 @@
 			'category1' : '안전관리대행',
 			'category2' : '안전보건 관리담당자 대행',
 			'category3' : '유해위험방지 계획서',
-			'category4' : '회원제관리'
+			'category4' : '안전보건공단 민간위탁사업'
 			}
 			
 			this.clickedCategory = clickedCategory
@@ -68,7 +67,6 @@
 		},
 		beforeRouteEnter(to,from,next){
 			next(vm=>{
-				console.log(12)
 				vm.dataUpdate()
 			})
 

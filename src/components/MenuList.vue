@@ -89,6 +89,7 @@
         font-size:12px;
         color:#999999;
         text-decoration: none;
+        display: block;
     }
     li:not(.active) > ul{
         display: none;

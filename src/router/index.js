@@ -21,9 +21,13 @@ import PostDetail from '../components/PostDetail'
 import PostList from '../components/PostList'
 
 //카테고리
+import CategoryComponent4 from '../components/category/CategoryComponent4'
 import CategoryComponent3 from '../components/category/CategoryComponent3'
 import CategoryComponent2 from '../components/category/CategoryComponent2'
 import CategoryComponent1 from '../components/category/CategoryComponent1'
+
+//회사소개 페이지
+import CompanyWelcomePage from '../pages/CompanyWelcomePage'
 
 Vue.use(VueRouter)
 
@@ -39,6 +43,17 @@ const routes = [
       footer:FooterPage
     },
   },
+  {
+    path:'/welcome',
+    name:'Welcome',
+    components:{
+      header:AppHeader,
+      aside:LeftPage,
+      content:CompanyWelcomePage,
+      footer:FooterPage      
+    }
+  },
+
   {
     path:'/board',
     components:{
@@ -96,6 +111,11 @@ const routes = [
         name:'category3',
         component:CategoryComponent3
       },
+      {
+        path:'/business/category4',
+        name:'category4',
+        component:CategoryComponent4
+      }
     ]
 
   },

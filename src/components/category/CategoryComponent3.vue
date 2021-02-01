@@ -3,7 +3,7 @@
         <div class="content cate1" v-show="categoryId==0">
 			<div class="content-header">
 				<h1>[ 제조업 유해·위험방지 계획서 작성 ]
-				<a class="download" href="#"><i class="fas fa-file-pdf"></i></a>
+				<a class="download" href="https://futuresafetyhome80.run.goorm.io/media/business_files/category3/fsit_category3_1.pdf" download><i class="fas fa-file-pdf"></i></a>
 				</h1>
 			</div>
             <div class="content-element">
@@ -252,7 +252,7 @@
 		<div class="content cate2" v-show="categoryId==1">
         	<div class="content-header">
 				<h1>[ 제출대상 13개 제조업종 ] 
-					<a class="download" href="#"><i class="fas fa-file-pdf"></i></a>
+					<a class="download" href="https://futuresafetyhome80.run.goorm.io/media/business_files/category3/fsit_category3_2.pdf" download><i class="fas fa-file-pdf"></i></a>
 				</h1>
 				<p class="subtitle middle">(산업안전보건법(제48조제1항, 동법시행령제33조의2, 한국표준산업분류표 10차 관련)</p>
 				<p class="subtitle middle purple">( 각 세부업종은 첨부파일을 참조 부탁드립니다. )</p>
@@ -290,7 +290,7 @@
 		<div class="content cate3" v-show="categoryId==2">
         	<div class="content-header">
 				<h1>[ 공단 공문 ]
-					<a class="download" href="#"><i class="fas fa-file-pdf"></i></a>
+					<a class="download" href="https://futuresafetyhome80.run.goorm.io/media/business_files/category3/fsit_category3_3.pdf" download><i class="fas fa-file-pdf"></i></a>
 				</h1>
 			</div>
             <div class="content-element">

@@ -4,7 +4,9 @@
 			<div class="content-header">
 				<h1>
 					[ 안전보건관리담당자교육 안내 ]
-					<a class="download" href="#"><i class="fas fa-file-pdf"></i></a>
+					<a class="download" href="https://futuresafetyhome80.run.goorm.io/media/business_files/category2/fsit_category2_1.pdf" download>
+						<i class="fas fa-file-pdf"></i>
+					</a>
 				</h1>
 			</div>
 			<p class="title">◉ 안전보건관리담당자 안내 팸플릿</p>
@@ -23,7 +25,7 @@
 			<div class="content-header">
 				<h1>
 					[ 안전보건관리담당자 선임계 ]
-					<a class="download" href="#"><i class="fas fa-file-pdf"></i></a>
+					<a class="download" href="https://futuresafetyhome80.run.goorm.io/media/business_files/category2/fsit_category2_2.pdf" download><i class="fas fa-file-pdf"></i></a>
 				</h1>
 			</div>
 			<p class="title">◉ 안전보건관리담당자 선임계 양식</p>

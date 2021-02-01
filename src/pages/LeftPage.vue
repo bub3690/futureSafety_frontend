@@ -1,13 +1,13 @@
 <template>
     <div class="left-page">
         <ul class="menus">
-            <menu-components emoji="far fa-building" :isboard="true" to='notice' num='1' >
+            <menu-components emoji="far fa-building" :isboard="false" to='Welcome' num='1' >
                 회사소개
             </menu-components>
             <menu-list emoji="fas fa-briefcase" 
             num='1' subject="주요사업">
                 <li>
-                    <router-link :to="{name:'category3'}">
+                    <router-link :to="{name:'category1'}">
                         안전관리대행
                     </router-link>
                 </li>
@@ -22,8 +22,8 @@
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{name:'category3'}">
-                        안전보건공단 민간위탁 사업
+                    <router-link :to="{name:'category4'}">
+                        안전보건공단 민간위탁<br>사업
                     </router-link>
                 </li>
             </menu-list>
@@ -116,6 +116,7 @@ import MenuList from '../components/MenuList.vue'
     }   
 
 
+
 /* 세부 메뉴 */
     ul.menus >label> li > ul{
         background: #3d3e42;
@@ -128,6 +129,7 @@ import MenuList from '../components/MenuList.vue'
     }
     ul.menus >label> li ul li a{
         font-size:12px;
+
     }
     li:not(.active) > ul{
         display: none;
