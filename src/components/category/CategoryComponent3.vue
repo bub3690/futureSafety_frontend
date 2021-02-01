@@ -204,7 +204,7 @@
                 <p class="title">◉ 유해/위험방지계획서 추진 절차</p>
                 <div class="content-box">
                     <p>
-                        <img class="content-image" src="/static/business/process1.png">
+                        <img class="content-image" src="/static/business/category3/process1.png">
                     </p>
                 </div>
 
@@ -225,14 +225,14 @@
                 <p class="title">◉ 유해·위험방지계획서 컨설팅 절차</p>
                 <div class="content-box">
                     <p>
-                        <img class="content-image" src="/static/business/process2.PNG">
+                        <img class="content-image" src="/static/business/category3/process2.PNG">
                     </p>
                 </div>       
 
                 <p class="title">◉ 심사 수수료</p>
                 <div class="content-box">
                     <p>
-                        <img class="content-image" src="/static/business/process3.png">
+                        <img class="content-image" src="/static/business/category3/process3.png">
                     </p>
                 </div>
 
@@ -297,7 +297,7 @@
                 <p class="title">◉ 공단 공문 스캔본</p>
 				<div class="content-box">
 					<p>
-                        <img class="content-image" src="/static/business/public_scan.jpg">
+                        <img class="content-image" src="/static/business/category3/public_scan.jpg">
                     </p>
 				</div>
 			</div>

@@ -12,7 +12,7 @@
                     </router-link>
                 </li>
                 <li>
-                    <router-link :to="{name:'category3'}">
+                    <router-link :to="{name:'category2'}">
                         안전보건관리 담당자 대행
                     </router-link>
                 </li>
@@ -23,7 +23,7 @@
                 </li>
                 <li>
                     <router-link :to="{name:'category3'}">
-                        회원제 관리
+                        안전보건공단 민간위탁 사업
                     </router-link>
                 </li>
             </menu-list>
