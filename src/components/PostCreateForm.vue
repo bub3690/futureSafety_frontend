@@ -71,6 +71,9 @@ import { Editor } from '@toast-ui/vue-editor';
 import api from '@/api'
     export default {
         name:'PostCreateForm',
+        props:{
+            initCategory:String,
+        },
         components:{
             editor:Editor
         },
@@ -112,15 +115,15 @@ import api from '@/api'
                 //alert('글이 \''+this.category+'\'에 작성되었습니다.')
                 const html = this.$refs.toastuiEditor.invoke('getHtml');
                 const {title,category,check,files,image_datas} = this
-                console.log(html)
+                //console.log(html)
                 this.$emit('submit',{title,category,check,files,html,image_datas})
-             },
+            },
             processFile(event){
                 //console.log(event.target.files[0])
                 // ie에서는 value ='' 넣을때 processFile이 다시호출됨.. if로 null일때는 작동 안하게함.
                 if(!!event.target.files[0]){
                     this.files.push(event.target.files[0])
-                    console.log(this.files)
+                    //console.log(this.files)
                     this.$refs.fileUpload.value=''
                 }
             },goBack(){
@@ -128,16 +131,17 @@ import api from '@/api'
             },removeFile(index){
                 this.files.splice(index,1)
             },insert_image(image){
-                console.log(image)
+                //console.log(image)
                 this.image_datas.push(image)
             }
         },
         created(){
             bus.$on('send:image_data',this.insert_image)
+            //console.log('props',this.initCategory)
         },
         beforeDestroy(){
             bus.$off('send:image_data',this.insert_image)
-        }
+        },
 
     }
 </script>

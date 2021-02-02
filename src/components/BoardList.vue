@@ -72,16 +72,16 @@ import api from '../api/index.js'
         created(){
             api.get('/api/board/list/?board_id=A').then(
                 res=>{
-                    this.notice= res.data.slice(0,5).reverse()
+                    this.notice= res.data.slice(-5).reverse()
                     this.nowList = this.notice
-                    console.log(this.nowList)
+                    //console.log(this.nowList)
                     //게시물은 5개로 고정, 처음 시작시 list는 notice
                 }
             )
             api.get('/api/board/list/?board_id=B').then(
                 res=>{
-                    this.safetyBoard = res.data.slice(0,5).reverse()
-                    console.log(this.safetyBoard)
+                    this.safetyBoard = res.data.slice(-5).reverse()
+                    //console.log(this.safetyBoard)
                 }
             )
             api.get('/api/board/accident/').then(

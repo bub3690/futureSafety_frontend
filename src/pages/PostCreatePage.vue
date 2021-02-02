@@ -1,7 +1,7 @@
 <template>
     <div class="post-create-page">
         <h2>게시물 작성하기</h2>
-        <post-create-form @submit="onSubmit" ></post-create-form>
+        <post-create-form :initCategory="initCategory" @submit="onSubmit" ></post-create-form>
     </div>
 </template>
 
@@ -14,7 +14,16 @@ import store from '../store'
         components:{
             'PostCreateForm':PostCreateForm
         },
+        data(){
+            return{
+                initCategory:'',
+            }
+        },
         methods:{
+            setCategory(payload){
+                //console.log('next')
+                this.initCategory = payload
+            },
             onSubmit(payload){
                 const fd = new FormData();
                 //token은 header와 함께 보낸다. 그 후 author 인증함.
@@ -96,6 +105,14 @@ import store from '../store'
             }
         },
         beforeRouteEnter(to, from, next){
+            if(from.fullPath == '/board/safety' ){
+                //console.log('안전')
+                var category = '안전 자료실' 
+            }else{
+                //console.log('공지')
+                var category = '공지사항'
+            }
+
             const {isAuthorized} = store.getters
             if(!isAuthorized){
                 alert('로그인이 필요합니다.')

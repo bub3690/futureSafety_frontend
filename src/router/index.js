@@ -150,7 +150,7 @@ const routes = [
       // 게시물이 아닌 주소창으로 접근할 경우
       // board/notice/28 : fullPath
       // to에 props 따올것.
-      console.log(from.fullPath != '/board/safety/'+to.params.postId)
+     // console.log(from.fullPath != '/board/safety/'+to.params.postId)
       if(from.fullPath != '/board/notice/'+to.params.postId && from.fullPath != '/board/safety/'+to.params.postId ){
         alert('수정하기 버튼을 통해 접근해주세요.')
         next(from)

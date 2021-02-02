@@ -10,6 +10,34 @@
                 <p>051-9160-115</p>
             </div>
         </div>
+        <br class="clear">
+        <h5>주요 임원</h5>
+            <div class="members">
+                <div class="member">
+                    <p class="name">대표이사 김영남</p>
+                    <p> 010-8825-0045 </p>
+                </div>
+                    
+                <div class="member">
+                    <p class="name">관리이사 이삼규</p>
+                    <p>010-4547-5832</p>
+                </div>
+                    
+                <div class="member">
+                    <p class="name">기술이사 손용수</p>
+                    <p> 010-8228-3651</p>
+                </div>
+                    
+                <div class="member">
+                    <p class="name">기술이사 양해준</p>
+                    <p>010-3471-2632</p>
+                </div>
+                    
+                <div class="member">
+                    <p class="name">기술이사 은장혁</p>
+                    <p>010-8825-0045</p>
+                </div>
+            </div>
     </div>
 </template>
 
@@ -24,14 +52,19 @@
 .HelpdeskComponent{
     box-sizing: border-box;
     width:167px;
-    height: 143px;
+    height:auto;
+    overflow: hidden;
     background:#3D3E42;
     margin:10px;
     font-family: NanumGothic;
     padding:15px;
 }
+.clear{
+    clear:both;
+}
 .HelpdeskComponent h5{
     color:#ffffff;
+    margin:15px 0;
 }
 .HelpdeskComponent .contact{
 
@@ -47,5 +80,16 @@
     font-size:12px;
     float:left;
     margin-left:10px;
+}
+.HelpdeskComponent .members{
+    color:#999999;
+    font-size:12px;
+}
+.HelpdeskComponent .members .member{
+    margin-bottom: 5px;
+}
+.HelpdeskComponent .members .name{
+    color:#ececec;
+    font-weight: 900;
 }
 </style>
