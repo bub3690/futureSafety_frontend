@@ -45,7 +45,7 @@ export default {
     background: #f7f9fa;
     position:relative;
     width:calc(100% - 190px);
-    height:100%;
+    height:auto;
     float:left;
     overflow: hidden;
 }
