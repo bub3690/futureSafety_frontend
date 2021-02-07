@@ -15,13 +15,12 @@ const productionPlugins = [
         "/business/category4",
     ],
     renderer: new PrerenderSpaPlugin.PuppeteerRenderer({
-      headless:false,
       renderAfterElementExists: '#app',
-      renderAfterTime: 60000,
     }),
   }),
 ];
-
+//headless:false,
+//renderAfterTime: 60000,
 
 module.exports = {
 	lintOnSave: false,
