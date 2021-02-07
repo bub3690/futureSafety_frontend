@@ -4,6 +4,9 @@ const PrerenderSpaPlugin = require('prerender-spa-plugin');
 const productionPlugins = [
   new PrerenderSpaPlugin({
     staticDir: path.join(__dirname, 'dist'),
+    server: {
+    	port: 300
+    },
     routes: [
         "/",
         "/business/category1",
@@ -12,7 +15,9 @@ const productionPlugins = [
         "/business/category4",
     ],
     renderer: new PrerenderSpaPlugin.PuppeteerRenderer({
-      renderAfterElementExists: '#app'
+      headless:false,
+      renderAfterElementExists: '#app',
+      renderAfterTime: 60000,
     }),
   }),
 ];
@@ -21,15 +26,20 @@ const productionPlugins = [
 module.exports = {
 	lintOnSave: false,
 	configureWebpack: (config) => {
-		if (process.env.NODE_ENV === 'production') {
+		if (process.env.NODE_ENV === 'prod') {
 		  config.plugins.push(...productionPlugins);
 		}
 	},
-	publicPath:'',
-	configureWebpack: {
-		 devServer: {
-			 disableHostCheck :true,
-		 }
-	}
+	publicPath:process.env.BASE_URL,
+  devServer: {
+    disableHostCheck :true,
+  }
         //transpileDependencies: ['vuex','axios','@toast-ui/vue-editor']
 };
+/*
+configureWebpack: {
+  devServer: {
+    disableHostCheck :true,
+  }
+}
+*/

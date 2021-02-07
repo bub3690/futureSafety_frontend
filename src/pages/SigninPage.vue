@@ -25,7 +25,7 @@
                         this.$router.push({name:'Home'})    
                     })
                     .catch(err=>{
-                        console.log(err.response.data)
+                        //console.log(err.response.data)
                         alert(err.response.data.message)
                     })
                 

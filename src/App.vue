@@ -29,6 +29,7 @@ export default{
     }
   },
   created(){
+    //console.log(process.env)
     bus.$on('start:spinner',this.startSpinner);
     bus.$on('end:spinner',this.endSpinner);
   },
