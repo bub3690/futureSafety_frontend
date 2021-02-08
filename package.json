@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve --host 0.0.0.0 --port 300 --mode local",
     "build-prod": "vue-cli-service build --mode prod",
-    "build-local":"vue-cli-service build --mode local"
+    "build-local": "vue-cli-service build --mode local"
   },
   "dependencies": {
     "@toast-ui/vue-editor": "^2.5.0",
