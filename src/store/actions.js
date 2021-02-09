@@ -10,12 +10,12 @@ export function fetchPostList({commit},payload){
     const sever_payload = matching1[payload]
 
     bus.$emit('start:spinner');
-    console.log('패치 list')
+    //console.log('패치 list')
     //console.log()
     api.get('/api/board/list/?board_id='+sever_payload).then(
         res=>{
 
-            console.log(res.data)
+            //console.log(res.data)
             const mutation_payload=res.data
             commit('FETCH_LISTS',mutation_payload)  
             setTimeout(function(){
@@ -40,7 +40,7 @@ export function fetchSearchPostList({commit},payload){
     bus.$emit('start:spinner');
     api.get(get_url).then(
         res=>{
-            console.log(res)
+            //console.log(res)
             const mutation_payload=res.data
             commit('FETCH_LISTS',mutation_payload)  
             setTimeout(function(){

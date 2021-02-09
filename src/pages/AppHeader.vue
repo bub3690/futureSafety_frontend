@@ -4,7 +4,7 @@
         </a>
         <div class="separator"></div>
         <div class="explain">
-            <p>노동부 지정 안전관리 전문기관</p>
+            <p>고용노동부 지정 안전관리 전문기관</p>
             <p>유해 위험방지계획서  / 위험성평가</p>
         </div>
         <div class="navbar">
