@@ -45,9 +45,7 @@
 			var dataArray = this.$route.path.split('/')
 			var clickedCategory = dataArray[2]
 			// 2 : category3
-			//console.log(dataArray)
-			
-            //var boardName = dataArray[2]
+
 			//초기화 하기
 			const titleMatch = {
 			'category1' : '안전관리대행',

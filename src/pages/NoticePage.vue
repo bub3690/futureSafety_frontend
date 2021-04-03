@@ -1,7 +1,5 @@
 <template>
             <div class="notice-page">
-                <button-crumb>
-                </button-crumb>
                 <h2>{{boardTitle_change}}</h2>
                 <router-view :list="posts" :boardTitle="boardTitle_change"></router-view>
                 <!--<post-list :list="notice"></post-list>-->
@@ -194,13 +192,15 @@ import {mapActions, mapState, mapGetters} from 'vuex';
     float:left;
     overflow: hidden;
     padding: 32px 40px;
-    font-family: NanumGothic,"나눔고딕",NanumGothic,"돋움",dotum,sans-serif;
+    font-family: 'Avenir', Arial, Helvetica, sans-serif;
 }
 .notice-page button{
     height:34px;
 }
 .notice-page h2{
     text-align:left;
+    font-family: NanumGothic,"나눔고딕",NanumGothic,"돋움",dotum,sans-serif;
+    
 }
 .notice-page .notice-footer{
     margin-top:30px;
@@ -212,6 +212,7 @@ import {mapActions, mapState, mapGetters} from 'vuex';
 .button-area{
     margin-bottom:30px;
     text-align:left;
+    
 }
 
 .button-area .right{

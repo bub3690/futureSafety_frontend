@@ -35,7 +35,7 @@
                     <td scope="col">{{post.date_published}}</td>
                 </tr>
 
-                <tr v-for="post in notChecked.reverse()" :key="post.id">
+                <tr v-for="post in notChecked" :key="post.id">
                     <td scope="col">{{post.id}}</td>
                     <td class="tableTitle" scope="col">
                         <router-link :to="{name:findDetail,
@@ -50,6 +50,13 @@
 
 
         </table>
+        <div class="pagination-area">
+            <button v-for="page in pageCalc" :key="page"
+            :class="{'btn-default selected':page==pagination,
+                    'btn-default':page!=pagination}" @click="go_page(page)">
+                {{page}}
+            </button>
+        </div>
     </div>
 </template>
 
@@ -81,16 +88,40 @@
                 return checked;
             },
             notChecked(){
-                const checked =this.list.filter((item,index,array)=>{
+                //중요 게시물이 아니며, 페이지네이션에 포함되는지 계산.
+                //페이지네이션은 중요 게시물은 개수에 미포함.
+                const start = (this.pagination-1)*this.pageSize
+                const end = start + this.pageSize
+                //.reverse는 원본 리스트를 바꾸기에 전개 연산자 사용함.
+                const reversed_list = [...this.list].reverse();
+                const not_checked = reversed_list.slice(start,end).filter((item,index,array)=>{
                     return item.is_important === false
                 })
-                return checked;                
+                return not_checked;                
             },
+            pageCalc(){
+                //전체 페이지 계산
+                const list_len = this.list.length
+                var total_page = Math.floor(list_len/this.pageSize) + (list_len%this.pageSize ? 1:0)
+                return total_page
 
+            },
+        },
+        data(){
+            return{
+                pagination:1,
+                pageSize:20,//pageSize 한페이지당 몇개 게시물 나올지결정.(중요게시물 미포함)
+            }
+        },
+        methods:{
+            go_page(page_num){
+                this.pagination = page_num
+            },
 
         },
         mounted(){
-            //Total1597 (1/160)
+            //비동기이기에 mounted에서는 아직 props를 전달 못받는 문제가 있다.
+            //그럴땐 computed에서 해준다.
         },
     }
 </script>
@@ -150,6 +181,20 @@
     text-align: left;
     color:#005799;
     font-weight: 700;
+}
+
+
+/* 
+pagination button들
+*/
+.pagination-area{
+    margin:10px 0;
+
+}
+.pagination-area .selected{
+    background: #005799;
+    color:white;
+    border:1px solid #ddd;
 }
 
 
