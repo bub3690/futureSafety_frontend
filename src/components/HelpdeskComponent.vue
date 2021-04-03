@@ -35,7 +35,7 @@
                     
                 <div class="member">
                     <p class="name">기술이사 은장혁</p>
-                    <p>010-8825-0045</p>
+                    <p>010-9818-4886</p>
                 </div>
             </div>
     </div>
