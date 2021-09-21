@@ -14,8 +14,8 @@
         <h5>주요 임원</h5>
             <div class="members">
                 <div class="member">
-                    <p class="name">대표이사 김영남</p>
-                    <p> 010-8825-0045 </p>
+                    <p class="name">대표이사 손용수</p>
+                    <p> 010-8228-3651 </p>
                 </div>
                     
                 <div class="member">
@@ -24,8 +24,8 @@
                 </div>
                     
                 <div class="member">
-                    <p class="name">기술이사 손용수</p>
-                    <p> 010-8228-3651</p>
+                    <p class="name">기술이사 김영남</p>
+                    <p>010-8825-0045</p>
                 </div>
                     
                 <div class="member">

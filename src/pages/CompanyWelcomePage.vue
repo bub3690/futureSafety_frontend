@@ -33,6 +33,51 @@
                     </div>
                 </div>
             </div>
+            <div class="content cate3" v-show="clickedIndex==2">
+                <div class="content-element">
+                    <div class="content-box">
+                        <p>
+                            <img class="content-image" src="/static/welcome/조직도.png">
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="content cate4" v-show="clickedIndex==3">
+                <div class="content-element">
+                    <div class="content-box">
+                        <p>
+                            <img class="content-image" src="/static/welcome/equipment/측정장비보유현황1.png">
+                        </p>
+                        <p>
+                            <img class="content-image" src="/static/welcome/equipment/측정장비보유현황2.png">
+                        </p>
+                        <p>
+                            <img class="content-image" src="/static/welcome/equipment/측정장비보유현황3.png">
+                        </p>
+                        <p>
+                            <img class="content-image" src="/static/welcome/equipment/측정장비보유현황4.png">
+                        </p>
+                        <p>
+                            <img class="content-image" src="/static/welcome/equipment/측정장비보유현황5.png">
+                        </p>
+                        <p>
+                            <img class="content-image" src="/static/welcome/equipment/측정장비보유현황6.png">
+                        </p>
+                        <p>
+                            <img class="content-image" src="/static/welcome/equipment/측정장비보유현황7.png">
+                        </p>
+                        <p>
+                            <img class="content-image" src="/static/welcome/equipment/측정장비보유현황8.png">
+                        </p>
+                        <p>
+                            <img class="content-image" src="/static/welcome/equipment/측정장비보유현황9.png">
+                        </p>
+                        <p>
+                            <img class="content-image" src="/static/welcome/equipment/측정장비보유현황10.png">
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -42,7 +87,7 @@
         name:'CompanyWelcomePage',
         data(){
             return{
-                AllCategory:['사업자등록증','지정서'],
+                AllCategory:['사업자등록증','지정서','조직도','보유 장비'],
                 clickedIndex:0,
                 
             }
