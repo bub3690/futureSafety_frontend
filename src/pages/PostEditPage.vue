@@ -1,7 +1,7 @@
 <template>
     <div class="post-edit-page">
         <h2>게시물 수정하기</h2>
-        <post-edit-form v-if="post" @submit="onSubmit" :post="post"></post-edit-form>
+        <post-edit-form v-if="post" @submit="onSubmit" :post="post" :isAdmin="isAdmin"></post-edit-form>
         <p v-else>게시물 불러오는 중...</p>
     </div>
 </template>
@@ -9,7 +9,7 @@
 <script>
 import api from '@/api'
 import PostEditForm from '../components/PostEditForm'
-import {mapState} from 'vuex'
+import {mapState,mapGetters} from 'vuex'
     export default {
         name:'PostEditPage',
         components:{
@@ -22,7 +22,8 @@ import {mapState} from 'vuex'
             },
         },
         computed:{
-            ...mapState(['post'])
+            ...mapState(['post']),
+        ...mapGetters(['isAdmin']),
         },
         methods:{
             onSubmit(payload){

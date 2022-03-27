@@ -16,8 +16,8 @@
                     </div>
                     <div class="forInput">
                         <select id="category" class="select-default" v-model="category">
-                            <option>공지사항</option>
-                            <option>안전 자료실</option>
+                            <option v-if="isAdmin">공지사항</option>
+                            <option v-if="isAdmin">안전 자료실</option>
                             <option>문의 사항</option>
                         </select>
                     </div>
@@ -27,7 +27,7 @@
                         <label for="check">중요 글</label>
                     </div>
                     <div class="forInput">
-                        <input class="search-default check" v-model="check" id="check" type="checkbox"/>
+                        <input class="search-default check" v-model="check" id="check" type="checkbox" disabled="isAdmin"/>
                     </div>
                 </div>
                 <div class="horizontal">
@@ -78,6 +78,9 @@ import api from '@/api'
             post:{
                 type:Object,
                 required:true
+            },
+            isAdmin:{
+                type:Boolean,
             }
         },
         components:{
