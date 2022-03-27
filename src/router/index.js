@@ -84,6 +84,18 @@ const routes = [
         name:'SafetyDetail',
         component:PostDetail,
         props:true,
+      },
+      {
+        path:'/board/help',
+        name:'help',
+        component:PostList,
+        props:true,
+      },
+      {
+        path:'/board/help/:postId',
+        name:'HelpDetail',
+        component:PostDetail,
+        props:true,
       }
     ]
   },
@@ -151,7 +163,10 @@ const routes = [
       // board/notice/28 : fullPath
       // to에 props 따올것.
      // console.log(from.fullPath != '/board/safety/'+to.params.postId)
-      if(from.fullPath != '/board/notice/'+to.params.postId && from.fullPath != '/board/safety/'+to.params.postId ){
+    // 여기 코드가 더러워서 수정 필요.
+      if(from.fullPath != '/board/notice/'+to.params.postId && 
+      from.fullPath != '/board/safety/'+to.params.postId &&
+      from.fullPath != '/board/help/'+to.params.postId){
         alert('수정하기 버튼을 통해 접근해주세요.')
         next(from)
         return false;

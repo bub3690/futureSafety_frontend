@@ -75,10 +75,13 @@
                 return this.list.length;
             },
             findDetail(){
+                //PROPS가 vuex에 담겨있는 'A','B','C'에따라 랜더된것. Noticepage로 갈것
                 if(this.boardTitle==='공지사항'){
                     return 'NoticeDetail';
                 }else if(this.boardTitle==='안전 자료실'){
                     return 'SafetyDetail';
+                }else if(this.boardTitle==='고객 문의'){
+                    return 'HelpDetail'
                 }
             },
             checkedList(){

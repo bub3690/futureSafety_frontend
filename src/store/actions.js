@@ -3,9 +3,9 @@ import api from '../api/index.js'
 
 
 export function fetchPostList({commit},payload){
-    const matching1={'notice':'A','safety':'B'}
+    const matching1={'notice':'A','safety':'B','help':'C'}
 
-    // payload2 에도 똑같은 값을 담는 이유는 boardTitle에 A,B를 통해서 게시판을 구분하기 위함. 
+    // payload2 에도 똑같은 값을 담는 이유는 boardTitle에 A,B,C를 통해서 게시판을 구분하기 위함. 
     // NOTICE 페이지에서는 COMPUTED에서 구분해야함.
     const sever_payload = matching1[payload]
 
@@ -25,7 +25,7 @@ export function fetchPostList({commit},payload){
     
 }
 export function fetchSearchPostList({commit},payload){
-    const matching1={'notice':'A','safety':'B'}
+    const matching1={'notice':'A','safety':'B','help':'C'}
 
     // payload2 에도 똑같은 값을 담는 이유는 boardTitle에 A,B를 통해서 게시판을 구분하기 위함. 
     // NOTICE 페이지에서는 COMPUTED에서 구분해야함.
@@ -51,7 +51,7 @@ export function fetchSearchPostList({commit},payload){
 }
 
 export function setBoardTitle({commit},payload){
-    const matching1={'notice':'A','safety':'B'}
+    const matching1={'notice':'A','safety':'B','help':'C'}
     const mutation_payload = matching1[payload]
     commit('SET_BOARD_TITLE',mutation_payload)
 }

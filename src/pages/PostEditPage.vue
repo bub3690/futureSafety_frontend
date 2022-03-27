@@ -30,11 +30,13 @@ import {mapState} from 'vuex'
                 //token은 header와 함께 보낸다. 그 후 author 인증함.
                 const category ={
                     '공지사항':'A',
-                    '안전 자료실':'B'
+                    '안전 자료실':'B',
+                    '문의 사항':'C'
                 }
                 const goCategory ={
                     '공지사항':'notice',
-                    '안전 자료실':'safety'
+                    '안전 자료실':'safety',
+                    '문의 사항':'help'
                 }
                 const post_data={
                     'board_id':category[payload.category],

@@ -3,16 +3,16 @@
 		<div class="content cate1" v-show="categoryId==0">
 			<div class="content-header">
 				<h1>
-					[ 자율안전관리 밀착지원 사업 ]
+					[ 안전보건관리체계 구축 컨설팅 ]
 					<a class="download" href="https://futuresafetyhome80.run.goorm.io/media/business_files/category4/fsit_category4_1.pdf"><i class="fas fa-file-pdf"></i></a>
 				</h1>
 			</div>
-			<p class="title">◉ 안전관리자를 두어야 하는 사업의 종류, 사업장의 상시근로자수, 안전관리자의 수 및 선임방법</p>
+			<p class="title">◉ 중규모 기업을 위한 안전보건관리체계 구축 컨설팅 매뉴얼</p>
 			<div class="content-element">
 				<div class="content-box">
                     <p>자세한 내용은 PDF파일 참조 부탁드립니다.</p>
                     <p>
-                        <img class="content-image" src="/static/business/category4/대표자간담회.PNG">
+                        <img class="content-image" src="/static/business/category4/컨설팅.png">
                     </p>
 				</div>
 			</div>

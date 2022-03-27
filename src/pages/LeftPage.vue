@@ -23,7 +23,7 @@
                 </li>
                 <li>
                     <router-link :to="{name:'category4'}">
-                        안전보건공단 민간위탁<br>사업
+                        안전보건공단 <br>민간위탁 사업
                     </router-link>
                 </li>
             </menu-list>
@@ -32,6 +32,9 @@
             </menu-components>
             <menu-components emoji="far fa-copy" :isboard="true" to='safety'  num='4' >
                 안전 자료실
+            </menu-components>
+            <menu-components emoji="far fa-copy" :isboard="true" to='help'  num='5' >
+                고객 문의
             </menu-components>
             <helpdesk-component></helpdesk-component>
         </ul>

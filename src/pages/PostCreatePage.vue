@@ -21,7 +21,7 @@ import store from '../store'
         },
         methods:{
             setCategory(payload){
-                //console.log('next')
+                console.log("payload : ",payload)
                 this.initCategory = payload
             },
             onSubmit(payload){
@@ -29,11 +29,13 @@ import store from '../store'
                 //token은 header와 함께 보낸다. 그 후 author 인증함.
                 const category ={
                     '공지사항':'A',
-                    '안전 자료실':'B'
+                    '안전 자료실':'B',
+                    '문의 사항':'C',
                 }
                 const goCategory ={
                     '공지사항':'notice',
-                    '안전 자료실':'safety'
+                    '안전 자료실':'safety',
+                    '문의 사항':'help'
                 }
                 const post_data={
                     'board_id':category[payload.category],
@@ -105,27 +107,38 @@ import store from '../store'
             }
         },
         beforeRouteEnter(to, from, next){
-            if(from.fullPath == '/board/safety' ){
-                //console.log('안전')
-                var category = '안전 자료실' 
-            }else{
-                //console.log('공지')
-                var category = '공지사항'
-            }
-
+            var delimiter = from.fullPath.split('/')[2]//접근하려는 페이지가 어디인지 체크하는것.
             const {isAuthorized} = store.getters
+            var now={
+                'notice':'공지사항',
+                'safety':'안전 자료실',
+                'help':'문의 사항'
+            }
+                        
+
             if(!isAuthorized){
                 alert('로그인이 필요합니다.')
                 next({name:'SigninPage'})
                 return false;
             }
+            // 22.03.27 예외사항 추가. 문의사항 게시판은 로그인된 일반계정도 작성 가능.
+            if(delimiter=='help'){
+                //이렇게 접근시 문의사항만 작성할 수 있도록 고쳐줘야함.
+                next(vm=>{
+                    vm.setCategory(now[delimiter])
+                })
+                return true;
+            }
+            //
             const isAdmin = store.state.me.is_admin
             if(!isAdmin){
                 alert('홈페이지 운영자만 작성할 수 있습니다.')
                 next({name:'Home'})
                 return false;
             }
-            next()
+            next(vm=>{
+                vm.setCategory(now[delimiter])
+            })
         }
     }
 </script>

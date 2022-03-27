@@ -18,6 +18,7 @@
                         <select id="category" class="select-default" v-model="category">
                             <option>공지사항</option>
                             <option>안전 자료실</option>
+                            <option>문의 사항</option>
                         </select>
                     </div>
                 </div>
@@ -141,7 +142,8 @@ import api from '@/api'
             bus.$on('send:image_data',this.insert_image)
             const category ={
                 'A':'공지사항',
-                'B':'안전 자료실'
+                'B':'안전 자료실',
+                'C':'문의 사항'
             }            
             //console.log(this.post)
             this.title = this.post.title

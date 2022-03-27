@@ -51,7 +51,7 @@ import {mapActions, mapState, mapGetters} from 'vuex';
         },
         computed:{
             boardTitle_change(){
-                const matching1={'A':'공지사항','B':'안전 자료실'}
+                const matching1={'A':'공지사항','B':'안전 자료실','C':'고객 문의'}
                 return matching1[this.boardTitle]
             },
             isDetail(){

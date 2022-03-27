@@ -15,9 +15,10 @@
                         <label for="category">카테고리</label>
                     </div>
                     <div class="forInput">
-                        <select id="category" class="select-default" v-model="category">
-                            <option>공지사항</option>
-                            <option>안전 자료실</option>
+                        <select id="category" class="select-default" v-model="get_initCategory">
+                            <option v-if="isAdmin">{{this.categories[0]}}</option>
+                            <option v-if="isAdmin">{{this.categories[1]}}</option>
+                            <option>{{this.categories[2]}}</option>
                         </select>
                     </div>
                 </div>
@@ -26,7 +27,7 @@
                         <label for="check">중요 글</label>
                     </div>
                     <div class="forInput">
-                        <input class="search-default check" v-model="check" id="check" type="checkbox"/>
+                        <input class="search-default check" v-model="check" id="check" type="checkbox" disabled="isAdmin"/>
                     </div>
                 </div>
                 <div class="horizontal">
@@ -64,6 +65,7 @@
 </template>
 
 <script>
+import store from '../store'
 import bus from '../utils/bus.js'
 import 'codemirror/lib/codemirror.css';
 import '@toast-ui/editor/dist/toastui-editor.css';
@@ -76,6 +78,15 @@ import api from '@/api'
         },
         components:{
             editor:Editor
+        },
+        computed:{
+            get_initCategory(){
+                //* 중요. props는 자동 업데이트 안되서, computed에서 받고, data를 받아야함.
+                //꼭 데이터는 안바꿔도 되는데, 나중에 필요할까봐 사용.
+                this.category = this.initCategory 
+                return this.initCategory
+            },
+
         },
         data(){
             return{
@@ -104,9 +115,11 @@ import api from '@/api'
                             }              
                     }
                 },
-                category:'공지사항',
+                category:this.initCategory,
                 check:false,
                 files:[],
+                categories:['공지사항','안전 자료실','문의 사항'],
+                isAdmin:false,
 
             }
         },
@@ -137,7 +150,18 @@ import api from '@/api'
         },
         created(){
             bus.$on('send:image_data',this.insert_image)
-            //console.log('props',this.initCategory)
+
+            //생성될때 유저가 admin이어야만, 중요글과 특정 게시판 작성을 할 수 있게한다.
+            const isAdmin = store.state.me.is_admin
+            this.isAdmin = isAdmin
+
+            if(!isAdmin){
+                console.log("admin x")
+                //this.categories.shift()
+                //this.categories.shift()
+            }   
+
+
         },
         beforeDestroy(){
             bus.$off('send:image_data',this.insert_image)
