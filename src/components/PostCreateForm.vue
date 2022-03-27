@@ -27,7 +27,7 @@
                         <label for="check">중요 글</label>
                     </div>
                     <div class="forInput">
-                        <input class="search-default check" v-model="check" id="check" type="checkbox" disabled="isAdmin"/>
+                        <input class="search-default check" v-model="check" id="check" type="checkbox" :disabled=" isAdmin==false"/>
                     </div>
                 </div>
                 <div class="horizontal">
