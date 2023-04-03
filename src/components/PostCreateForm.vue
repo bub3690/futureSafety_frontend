@@ -15,7 +15,7 @@
                         <label for="category">카테고리</label>
                     </div>
                     <div class="forInput">
-                        <select id="category" class="select-default" v-model="get_initCategory">
+                        <select id="category" class="select-default" v-model="get_Category">
                             <option v-if="isAdmin">{{this.categories[0]}}</option>
                             <option v-if="isAdmin">{{this.categories[1]}}</option>
                             <option>{{this.categories[2]}}</option>
@@ -80,17 +80,29 @@ import api from '@/api'
             editor:Editor
         },
         computed:{
-            get_initCategory: {
+
+            get_Category: {
                 //* 중요. props는 자동 업데이트 안되서, computed에서 받고, data를 받아야함.
                 //꼭 데이터는 안바꿔도 되는데, 나중에 필요할까봐 사용.
-                set:function(){
-                    this.category = this.initCategory
+                set:function(new_value){
+                    // 현재 문제. setter는 시작하자마자 작동안함. initCategory-> category로 안받음.
+
+                    this.category = new_value
                 },
                 get:function(){
-                    return this.initCategory
+
+                    return this.category
                 }
                 
             },
+            get_initCategory: function(){
+                //* 중요. props는 자동 업데이트 안되서, computed에서 받고, data를 받아야함.
+                //꼭 데이터는 안바꿔도 되는데, 나중에 필요할까봐 사용.
+
+                this.category=this.initCategory
+                return this.initCategory
+            },
+
 
         },
         data(){
@@ -120,7 +132,7 @@ import api from '@/api'
                             }              
                     }
                 },
-                category:this.initCategory,
+                category:'',
                 check:false,
                 files:[],
                 categories:['공지사항','안전 자료실','문의 사항'],
@@ -128,6 +140,11 @@ import api from '@/api'
 
             }
         },
+        watch: {
+                    initCategory() {
+                        this.category =this.initCategory
+                    }
+                },        
         methods:{
             onSubmit(){
                 //alert('글이 \''+this.category+'\'에 작성되었습니다.')
@@ -164,7 +181,9 @@ import api from '@/api'
                 console.log("admin x")
                 //this.categories.shift()
                 //this.categories.shift()
-            }   
+            }
+
+
 
 
         },

@@ -22,8 +22,10 @@ const productionPlugins = [
 //headless:false,
 //renderAfterTime: 60000,
 
+
 module.exports = {
 	lintOnSave: false,
+  productionSourceMap: false,
 	configureWebpack: (config) => {
 		if (process.env.NODE_ENV === 'prod') {
 		  config.plugins.push(...productionPlugins);

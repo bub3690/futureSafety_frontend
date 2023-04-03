@@ -21,7 +21,7 @@ import store from '../store'
         },
         methods:{
             setCategory(payload){
-                console.log("payload : ",payload)
+
                 this.initCategory = payload
             },
             onSubmit(payload){
@@ -37,6 +37,7 @@ import store from '../store'
                     '안전 자료실':'safety',
                     '문의 사항':'help'
                 }
+                console.log(payload)
                 const post_data={
                     'board_id':category[payload.category],
                     'title':payload.title,
@@ -60,7 +61,7 @@ import store from '../store'
                 }
 
                 // multiple files
-                console.log("파일:",payload.files)
+                //console.log("파일:",payload.files)
                 if(payload.files.length!=0){
                     post_data['post_files']=payload.files
                     for(var i=0; i<payload.files.length; i++){
@@ -114,7 +115,8 @@ import store from '../store'
                 'safety':'안전 자료실',
                 'help':'문의 사항'
             }
-                        
+            console.log('delimiter',delimiter)
+            console.log('now',now[delimiter])          
 
             if(!isAuthorized){
                 alert('로그인이 필요합니다.')
