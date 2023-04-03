@@ -80,11 +80,16 @@ import api from '@/api'
             editor:Editor
         },
         computed:{
-            get_initCategory(){
+            get_initCategory: {
                 //* 중요. props는 자동 업데이트 안되서, computed에서 받고, data를 받아야함.
                 //꼭 데이터는 안바꿔도 되는데, 나중에 필요할까봐 사용.
-                this.category = this.initCategory 
-                return this.initCategory
+                set:function(){
+                    this.category = this.initCategory
+                },
+                get:function(){
+                    return this.initCategory
+                }
+                
             },
 
         },
